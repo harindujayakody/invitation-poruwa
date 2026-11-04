@@ -51,8 +51,7 @@ export function SamplePreviewView({ template, locale }: SamplePreviewViewProps) 
       ? template.defaultEvents.ta
       : template.defaultEvents.en;
 
-    const futureDate = new Date();
-    futureDate.setDate(futureDate.getDate() + 45);
+    const sampleEventDate = "2026-12-21T09:42:00.000Z";
 
     return {
       couple: {
@@ -82,7 +81,7 @@ export function SamplePreviewView({ template, locale }: SamplePreviewViewProps) 
         mapUrl: "https://maps.google.com",
         notes: ev.notes,
       })),
-      eventDate: futureDate.toISOString(),
+      eventDate: sampleEventDate,
       sections: {
         showCover: true,
         showEvents: true,
