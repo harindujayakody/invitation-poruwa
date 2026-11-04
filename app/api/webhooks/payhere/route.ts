@@ -36,8 +36,11 @@ export async function POST(req: NextRequest) {
       md5sig = body.md5sig || "";
     }
 
-    const merchantSecret =
-      process.env.PAYHERE_MERCHANT_SECRET || "4MjAxNDMxNzEyMjAxOTAxMzg=";
+    const merchantSecret = process.env.PAYHERE_MERCHANT_SECRET;
+    // Never fall back to a known secret: anyone could forge a "paid" webhook.
+    if (!merchantSecret) {
+      return NextResponse.json({ error: "payments_not_configured" }, { status: 503 });
+    }
 
     // Verify signature
     const isValid = verifyPayHereSignature({

@@ -7,6 +7,7 @@ import { LocaleSwitcher } from "@/components/common/locale-switcher";
 
 export function SiteHeader() {
   const t = useTranslations("nav");
+  const tHub = useTranslations("hub");
 
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between border-b border-[var(--line)] bg-[var(--surface)]/95 px-[var(--space-6)] py-[var(--space-3)] backdrop-blur-md md:px-[var(--space-12)]">
@@ -25,6 +26,18 @@ export function SiteHeader() {
 
       {/* Navigation links */}
       <nav className="flex items-center gap-[var(--space-6)]">
+        <Link
+          href="/vendors"
+          className="hidden text-[length:var(--text-sm)] font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] md:inline-flex md:items-center min-h-[var(--target)] px-2"
+        >
+          {tHub("navVendors")}
+        </Link>
+        <Link
+          href="/plan/budget"
+          className="hidden text-[length:var(--text-sm)] font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] md:inline-flex md:items-center min-h-[var(--target)] px-2"
+        >
+          {tHub("navBudget")}
+        </Link>
         <Link
           href="/templates"
           className="hidden text-[length:var(--text-sm)] font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] md:inline-flex md:items-center min-h-[var(--target)] px-2"

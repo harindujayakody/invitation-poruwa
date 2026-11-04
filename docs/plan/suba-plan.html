@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>suba.lk — Product, growth and redesign plan</title>
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --surface: oklch(0.985 0.006 85);
+    --raised: oklch(0.995 0.004 85);
+    --sunk: oklch(0.955 0.012 80);
+    --ink: oklch(0.22 0.015 60);
+    --muted: oklch(0.44 0.015 60);
+    --line: oklch(0.89 0.012 80);
+    --accent: oklch(0.42 0.12 25);      /* temple maroon */
+    --accent-soft: oklch(0.93 0.03 25);
+    --leaf: oklch(0.45 0.08 150);       /* betel-leaf green */
+    --leaf-soft: oklch(0.94 0.03 150);
+    --gold: oklch(0.72 0.14 75);
+    --gold-soft: oklch(0.95 0.04 85);
+    --r-sm: 6px; --r-md: 10px; --r-lg: 16px;
+    --serif: "Iowan Old Style", "Palatino", Georgia, serif;
+    --sans: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+    --si: "Sinhala Sangam MN", "Sinhala MN", sans-serif;
+    --ta: "Tamil Sangam MN", "Tamil MN", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: var(--sans); color: var(--ink); background: var(--surface); font-size: 10.5pt; line-height: 1.55; }
+  :lang(si) { font-family: var(--si); line-height: 1.7; letter-spacing: 0; }
+  :lang(ta) { font-family: var(--ta); line-height: 1.7; letter-spacing: 0; }
+
+  .page { width: 210mm; height: 297mm; padding: 20mm 18mm 16mm; position: relative; overflow: hidden; page-break-after: always; background: var(--surface); }
+  .page:last-child { page-break-after: auto; }
+  .folio { position: absolute; bottom: 9mm; left: 18mm; right: 18mm; display: flex; justify-content: space-between; font-size: 8pt; color: var(--muted); border-top: 1px solid var(--line); padding-top: 3mm; }
+
+  h1 { font-family: var(--serif); font-weight: 400; font-size: 34pt; line-height: 1.08; }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: 21pt; line-height: 1.15; margin-bottom: 4mm; }
+  h3 { font-size: 11pt; font-weight: 600; margin: 5mm 0 1.5mm; }
+  .kicker { font-size: 8.5pt; font-weight: 600; color: var(--accent); margin-bottom: 2mm; }
+  p { max-width: 68ch; margin-bottom: 2.5mm; }
+  .lead { font-size: 12pt; color: var(--muted); max-width: 60ch; }
+  ul.list { padding-left: 4.5mm; margin-bottom: 2.5mm; }
+  ul.list li { margin-bottom: 1.2mm; max-width: 66ch; }
+  .muted { color: var(--muted); }
+  .small { font-size: 8.5pt; }
+  strong { font-weight: 600; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5mm; }
+  .box { border: 1px solid var(--line); border-radius: var(--r-md); padding: 4mm 4.5mm; background: var(--raised); }
+  .box h3 { margin-top: 0; }
+  .note { border-left: 3px solid var(--gold); background: var(--gold-soft); padding: 3mm 4mm; border-radius: 0 var(--r-sm) var(--r-sm) 0; margin: 3mm 0; font-size: 9.5pt; }
+  .stat { font-family: var(--serif); font-size: 22pt; line-height: 1; color: var(--accent); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 8.8pt; margin: 2mm 0 3mm; }
+  th { text-align: left; font-weight: 600; color: var(--muted); border-bottom: 1.5px solid var(--ink); padding: 1.6mm 2mm 1.6mm 0; }
+  td { border-bottom: 1px solid var(--line); padding: 1.6mm 2mm 1.6mm 0; vertical-align: top; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .tag { display: inline-block; font-size: 7.5pt; font-weight: 600; padding: 0.3mm 1.6mm; border-radius: 3px; }
+  table.dense { font-size: 8pt; line-height: 1.35; }
+  table.dense td, table.dense th { padding: 1.1mm 2mm 1.1mm 0; }
+  .t-p1 { background: var(--accent-soft); color: var(--accent); }
+  .t-p2 { background: var(--gold-soft); color: oklch(0.45 0.1 70); }
+  .t-p3 { background: var(--leaf-soft); color: var(--leaf); }
+
+  /* Cover */
+  .cover { background: var(--accent); color: var(--surface); padding: 26mm 22mm; }
+  .cover .folio { color: oklch(0.85 0.04 25); border-color: oklch(0.55 0.1 25); }
+  .cover h1 { font-size: 44pt; color: var(--surface); margin: 40mm 0 8mm; }
+  .cover .lead { color: oklch(0.9 0.03 40); font-size: 13pt; }
+  .cover .mark { font-family: var(--serif); font-size: 18pt; }
+  .cover .si { font-size: 15pt; color: var(--gold); margin-top: 6mm; }
+  .arc { position: absolute; right: -40mm; bottom: -40mm; width: 170mm; height: 170mm; border-radius: 50%; border: 1px solid oklch(0.55 0.1 25); }
+  .arc.b { width: 130mm; height: 130mm; right: -20mm; bottom: -20mm; }
+  .arc.c { width: 90mm; height: 90mm; right: 0; bottom: 0; border-color: var(--gold); }
+
+  /* Mockup frames */
+  .phone { width: 64mm; border: 2.2mm solid oklch(0.2 0.01 60); border-radius: 9mm; overflow: hidden; background: var(--surface); flex: none; }
+  .phone .scr { height: 128mm; overflow: hidden; font-size: 7pt; line-height: 1.4; position: relative; }
+  .sbar { height: 5mm; display: flex; justify-content: space-between; align-items: center; padding: 0 4mm; font-size: 6pt; font-weight: 600; }
+  .browser { border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; background: var(--surface); }
+  .browser .chrome { height: 7mm; background: var(--sunk); border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 1.5mm; padding: 0 3mm; }
+  .browser .chrome i { width: 2.2mm; height: 2.2mm; border-radius: 50%; background: var(--line); display: inline-block; }
+  .browser .url { margin-left: 4mm; background: var(--raised); border-radius: 4px; font-size: 6.5pt; padding: 0.6mm 3mm; color: var(--muted); width: 70mm; }
+  .browser .scr { font-size: 7pt; line-height: 1.4; }
+
+  .m-nav { display: flex; align-items: center; justify-content: space-between; padding: 2.5mm 4mm; border-bottom: 1px solid var(--line); background: var(--raised); }
+  .logo { font-family: var(--serif); font-size: 11pt; color: var(--accent); }
+  .logo b { color: var(--gold); font-weight: 400; }
+  .m-links { display: flex; gap: 4mm; font-size: 6.8pt; color: var(--muted); }
+  .m-links .on { color: var(--ink); font-weight: 600; }
+  .btn { display: inline-block; background: var(--accent); color: var(--surface); border-radius: var(--r-sm); padding: 1.6mm 3mm; font-weight: 600; font-size: 6.8pt; }
+  .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  .btn.block { display: block; text-align: center; padding: 2.4mm; font-size: 7.5pt; }
+  .input { border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--raised); padding: 1.6mm 2.2mm; color: var(--muted); font-size: 6.8pt; }
+  .ph { background: var(--sunk); border-radius: var(--r-sm); display: flex; align-items: flex-end; padding: 1.5mm; color: var(--muted); font-size: 5.8pt; }
+  .ph.m { background: oklch(0.88 0.03 30); }
+  .ph.g { background: oklch(0.88 0.03 150); }
+  .ph.y { background: oklch(0.9 0.04 80); }
+  .chip { display: inline-block; border: 1px solid var(--line); border-radius: var(--r-sm); padding: 0.8mm 2mm; font-size: 6.3pt; margin: 0 1mm 1mm 0; background: var(--raised); }
+  .chip.on { border-color: var(--ink); background: var(--ink); color: var(--surface); }
+  .star { color: var(--gold); }
+  .bar { height: 1.8mm; background: var(--sunk); border-radius: 1mm; overflow: hidden; }
+  .bar span { display: block; height: 100%; background: var(--accent); }
+  .bar span.l { background: var(--leaf); }
+  .bar span.y { background: var(--gold); }
+  .row { display: flex; justify-content: space-between; align-items: center; gap: 2mm; }
+  .caption { font-size: 8.5pt; color: var(--muted); margin-top: 2.5mm; max-width: 62ch; }
+  .caption strong { color: var(--ink); }
+  .ico { width: 3.4mm; height: 3.4mm; vertical-align: -0.7mm; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+</style>
+</head>
+<body>
+
+<!-- 1. COVER -->
+<section class="page cover">
+  <div class="arc"></div><div class="arc b"></div><div class="arc c"></div>
+  <div class="mark">suba<span style="color:var(--gold)">.lk</span></div>
+  <h1>Every part of a Sri Lankan wedding, planned in one place.</h1>
+  <p class="lead">Product, revenue, growth and redesign plan for turning the current invitation app into the country's main wedding hub.</p>
+  <p class="si" lang="si">සුබ මංගල්‍යයක් — එකම තැනකින්</p>
+  <p class="small" style="margin-top:22mm; color:oklch(0.88 0.03 40)">Prepared for the owners of suba.lk · Version 1 · 5 November 2026</p>
+  <div class="folio"><span>Confidential — owners only</span><span>1</span></div>
+</section>
+
+<!-- 2. SUMMARY -->
+<section class="page">
+  <div class="kicker">Summary</div>
+  <h2>The plan on one page</h2>
+  <p class="lead">Couples in Sri Lanka still plan a wedding by asking relatives, scrolling Facebook pages and phoning vendors one by one. Prices are hidden, availability is a guess, and nothing is kept in one place. suba.lk becomes the one place where a couple plans, compares, books and invites.</p>
+
+  <div class="grid3" style="margin:6mm 0">
+    <div class="box"><div class="stat">16</div><p class="small muted" style="margin-top:2mm">services you listed, grouped into 5 sections: Plan, Find &amp; book, Traditions, Invite and Finance.</p></div>
+    <div class="box"><div class="stat">7</div><p class="small muted" style="margin-top:2mm">ways to earn: invitations, vendor plans, booking commission, quote leads, featured listings, printing and loan referrals.</p></div>
+    <div class="box"><div class="stat">12 mo</div><p class="small muted" style="margin-top:2mm">to a working marketplace in 4 phases, starting with the invitation app you already have.</p></div>
+  </div>
+
+  <h3>Three bets</h3>
+  <ul class="list">
+    <li><strong>Vendors before visitors.</strong> A directory nobody lists in is useless. We sign up about 300 vendors in Colombo, Gampaha and Kandy before spending on couple marketing, starting with photographers, venues, decor, salons and wedding cars.</li>
+    <li><strong>Free tools bring the traffic.</strong> The budget planner, the nakath (auspicious time) calendar, price guides and invitations are free. People find them on Google, TikTok and WhatsApp, and that traffic feeds the vendor pages that make money.</li>
+    <li><strong>Every invitation is an advert.</strong> A wedding has about 300 guests, and each one opens a suba.lk link. Showing the couple's vendors on the invitation (with their permission) is our cheapest way to grow.</li>
+  </ul>
+
+  <h3>What we need to decide now</h3>
+  <ul class="list">
+    <li>Company structure, who owns what and who does what between the two owners. Register a private limited company before signing vendor contracts and the PayHere merchant agreement.</li>
+    <li>Whether we take deposits (more revenue, but we handle refunds and disputes) or only pass leads to vendors at first. <strong>Our recommendation: leads and quotes first, deposits from month 4.</strong></li>
+    <li>A budget for the first 6 months: about two people building, one person signing up vendors, and a small budget for ads and content.</li>
+  </ul>
+
+  <div class="note"><strong>Before any marketing:</strong> fix the 3 launch blockers in the current code: the hard-coded PayHere secret, uploads that are saved to the server's own disk, and missing rate limits on guest endpoints. Each is a few days' work at most.</div>
+  <div class="folio"><span>suba.lk plan</span><span>2</span></div>
+</section>
+
+<!-- 3. MARKET -->
+<section class="page">
+  <div class="kicker">Market and position</div>
+  <h2>Why this can work in Sri Lanka</h2>
+  <div class="grid2">
+    <div>
+      <h3>The size of the prize</h3>
+      <p>Sri Lanka registers roughly <strong>150,000 marriages a year</strong> (check the latest Registrar General figure before quoting it). A typical Colombo-area wedding costs between <strong>Rs. 1.5 and 6 million</strong>, mostly spent on venue, catering, photography, decor, dress and cars.</p>
+      <p>If suba.lk is involved in 10% of weddings and takes 2–3% of what they spend through fees and commission, that is a business worth several hundred million rupees a year. Getting there takes years, but the ceiling is high.</p>
+      <h3>How couples plan today</h3>
+      <ul class="list">
+        <li>Facebook and Instagram pages for each vendor, with prices only shared by DM.</li>
+        <li>General classifieds sites, and word of mouth through family and friends.</li>
+        <li>Phoning each vendor one by one to ask if the date is free.</li>
+        <li>Spreadsheets or notebooks for the budget. Printed cards for invitations.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Who we serve</h3>
+      <table>
+        <tr><th>Who</th><th>What they need</th></tr>
+        <tr><td><strong>Couples</strong> (25–35)</td><td>Clear prices, real reviews, free dates, one budget, less family stress.</td></tr>
+        <tr><td><strong>Parents</strong></td><td>Nakath and horoscope matching, trusted traditional services, Sinhala and Tamil.</td></tr>
+        <tr><td><strong>Couples abroad</strong></td><td>Plan a wedding at home from Australia, the UK or the Middle East. Willing to pay more.</td></tr>
+        <tr><td><strong>Vendors</strong></td><td>Steady bookings outside peak season, fewer time-wasting enquiries, a professional profile.</td></tr>
+        <tr><td><strong>Guests and browsers</strong></td><td>Ideas, price guides, dress and decor inspiration. This is where the traffic comes from.</td></tr>
+      </table>
+      <h3>Our position</h3>
+      <p>Not just a directory, and not just an invitation tool. <strong>suba.lk is where the plan lives</strong>: the budget, bookings, guest list and invitations update each other. Directories can copy a vendor list. It is much harder to copy a couple's whole wedding plan.</p>
+      <div class="note">Sinhala, Tamil and English from day one, with Buddhist, Hindu, Muslim and Christian wedding traditions covered properly. Most competitors are English-only and Colombo-only.</div>
+    </div>
+  </div>
+  <div class="folio"><span>suba.lk plan</span><span>3</span></div>
+</section>
+
+<!-- 4. PRODUCT MAP -->
+<section class="page">
+  <div class="kicker">Product</div>
+  <h2>All 16 services, organised into 5 sections</h2>
+  <p>Every vendor uses the same structure: a profile, packages with real prices, a calendar of free dates and reviews. That lets us add new categories without building new software each time. Each category uses one of three ways to connect couples with vendors: <strong>Reserve</strong> (pay a deposit for a date), <strong>Quote</strong> (send one request to up to 5 vendors) or <strong>Contact</strong> (call or WhatsApp, which we track as a lead).</p>
+  <table class="dense">
+    <tr><th style="width:24%">Your request</th><th style="width:15%">Section</th><th style="width:31%">What we build</th><th style="width:16%">How couples connect</th><th>Phase</th></tr>
+    <tr><td>Centralised wedding hub</td><td>Home</td><td>Search by category, city and date. A personal "My wedding" workspace.</td><td>—</td><td><span class="tag t-p1">1</span></td></tr>
+    <tr><td>Generate wedding cards</td><td>Invite</td><td>The existing invitation editor, plus a printable card design (PDF).</td><td>Self-serve</td><td><span class="tag t-p1">1</span></td></tr>
+    <tr><td>Get cards printed</td><td>Invite</td><td>Send the card design to partner printers. Choose quantity and paper, get delivery.</td><td>Quote → order</td><td><span class="tag t-p2">2</span></td></tr>
+    <tr><td>Plan wedding expenses</td><td>Plan</td><td>Budget planner with typical Sri Lankan price ranges. Bookings update it automatically.</td><td>Free tool</td><td><span class="tag t-p1">1</span></td></tr>
+    <tr><td>Plan locations and venues</td><td>Find &amp; book</td><td>Venue directory with filters for capacity, price per plate, area and free dates.</td><td>Quote / Reserve</td><td><span class="tag t-p1">1</span></td></tr>
+    <tr><td>Check photographer prices</td><td>Find &amp; book</td><td>Package prices shown openly, plus a yearly price guide.</td><td>—</td><td><span class="tag t-p1">1</span></td></tr>
+    <tr><td>Reserve photographers</td><td>Find &amp; book</td><td>Availability calendar and a deposit to hold the date.</td><td>Reserve</td><td><span class="tag t-p2">2</span></td></tr>
+    <tr><td>Vendor quotations</td><td>Find &amp; book</td><td>One request goes to up to 5 vendors, and their quotes appear side by side.</td><td>Quote</td><td><span class="tag t-p1">1</span></td></tr>
+    <tr><td>Decorations</td><td>Find &amp; book</td><td>Decorators, plus an ideas gallery where every photo links to the vendor who made it.</td><td>Quote</td><td><span class="tag t-p1">1</span></td></tr>
+    <tr><td>Horoscope readers (astrologers)</td><td>Traditions</td><td>Verified astrologers for horoscope matching and nakath. Book a consultation.</td><td>Contact / Reserve</td><td><span class="tag t-p2">2</span></td></tr>
+    <tr><td>Ashtaka performers</td><td>Traditions</td><td>Ashtaka performers and Jayamangala Gatha chanting groups, with audio samples.</td><td>Contact / Reserve</td><td><span class="tag t-p2">2</span></td></tr>
+    <tr><td>DJs</td><td>Find &amp; book</td><td>DJs and bands (and Magul Bera drummers), with music samples and equipment lists.</td><td>Reserve</td><td><span class="tag t-p2">2</span></td></tr>
+    <tr><td>Wedding cars</td><td>Find &amp; book</td><td>Car photos, price per trip or per day, decoration included or not.</td><td>Reserve</td><td><span class="tag t-p1">1</span></td></tr>
+    <tr><td>Salons</td><td>Find &amp; book</td><td>Bridal dressing packages: Kandyan, Indian or Western saree, trials.</td><td>Reserve</td><td><span class="tag t-p1">1</span></td></tr>
+    <tr><td>Fragrance partners</td><td>Find &amp; book</td><td>Perfume and wedding-favour partners. Bulk gift packs for guests.</td><td>Quote</td><td><span class="tag t-p2">2</span></td></tr>
+    <tr><td>Wedding loans</td><td>Finance</td><td>Compare loans from partner banks and finance companies, then apply on the lender's own site.</td><td>Referral</td><td><span class="tag t-p3">3</span></td></tr>
+  </table>
+  <p class="small muted">Phases: see the roadmap. Loans: suba.lk only refers couples and never lends, which keeps us outside CBSL lending rules (confirm with a lawyer).</p>
+  <div class="folio"><span>suba.lk plan</span><span>4</span></div>
+</section>
+
+<!-- 5. REVENUE -->
+<section class="page">
+  <div class="kicker">Revenue</div>
+  <h2>How suba.lk makes money</h2>
+  <p>Couples should never pay to browse or plan, because free use is what brings traffic. Vendors pay because we send them bookings. The invitation app already earns from launch.</p>
+  <table>
+    <tr><th style="width:23%">Income stream</th><th style="width:22%">Who pays</th><th style="width:30%">Price (to test)</th><th>Starts</th></tr>
+    <tr><td><strong>Invitations</strong></td><td>Couple</td><td>Rs. 2,900 / 4,900 / 8,900 one-off (current prices)</td><td>Now</td></tr>
+    <tr><td><strong>Vendor plans</strong></td><td>Vendor</td><td>Free basic listing · Pro Rs. 3,900/month · Premium Rs. 9,900/month</td><td>Month 3</td></tr>
+    <tr><td><strong>Quote leads</strong></td><td>Vendor (free plan)</td><td>Rs. 250–750 per quote request received, depending on category. Pro plans get unlimited leads.</td><td>Month 2</td></tr>
+    <tr><td><strong>Booking commission</strong></td><td>Vendor</td><td>6–10% of the deposit paid through suba.lk (not of the full wedding bill)</td><td>Month 4</td></tr>
+    <tr><td><strong>Featured listings</strong></td><td>Vendor</td><td>Top of a category in one city: Rs. 5,000–15,000/month. Always labelled "Featured".</td><td>Month 4</td></tr>
+    <tr><td><strong>Card printing</strong></td><td>Couple</td><td>15–25% margin on partner printer orders</td><td>Month 5</td></tr>
+    <tr><td><strong>Loan referrals</strong></td><td>Bank / finance company</td><td>A fixed fee per approved loan (agree the fee with each partner)</td><td>Month 8</td></tr>
+    <tr><td><strong>Sponsorships</strong></td><td>Brands, hotels</td><td>Price guides, wedding fairs and newsletter sponsorships</td><td>Month 6</td></tr>
+  </table>
+
+  <h3>Example numbers (all assumptions; we check them against real data every month)</h3>
+  <table>
+    <tr><th>End of</th><th class="num">Vendors listed</th><th class="num">Paying vendors</th><th class="num">Invitations sold</th><th class="num">Monthly revenue (Rs.)</th></tr>
+    <tr><td>Month 6</td><td class="num">400</td><td class="num">40</td><td class="num">150 / mo</td><td class="num">≈ 0.9 million</td></tr>
+    <tr><td>Month 12</td><td class="num">1,200</td><td class="num">180</td><td class="num">400 / mo</td><td class="num">≈ 3.2 million</td></tr>
+    <tr><td>Month 24</td><td class="num">3,000</td><td class="num">600</td><td class="num">1,000 / mo</td><td class="num">≈ 10 million</td></tr>
+  </table>
+  <p class="small muted">How month 12 adds up: 180 paying vendors × Rs. 5,500 on average = 0.99 million; 400 invitations × Rs. 4,000 = 1.6 million; commission and leads ≈ 0.4 million; featured listings and printing ≈ 0.2 million. These are planning numbers, not forecasts.</p>
+
+  <div class="note"><strong>Pricing rule:</strong> vendors should earn back the Pro fee from a single booking a month. If a vendor's Pro plan doesn't bring them at least one booking in 60 days, we offer a free month. Keeping vendors paying matters more than getting new ones to sign up.</div>
+  <div class="folio"><span>suba.lk plan</span><span>5</span></div>
+</section>
+
+<!-- 6. GROWTH -->
+<section class="page">
+  <div class="kicker">Traffic and growth</div>
+  <h2>Becoming the top wedding site in the country</h2>
+  <div class="grid2">
+    <div>
+      <h3>1. Search (Google): the main traffic source</h3>
+      <ul class="list">
+        <li><strong>A page for every category in every city:</strong> "wedding photographers in Kandy", "wedding cars in Galle", "Poruwa decorations in Negombo". With 25 cities, 16 categories and 3 languages, that is over 1,000 pages generated from real listings, each with prices and reviews.</li>
+        <li><strong>The nakath calendar:</strong> "Poruwa nakath 2027" is searched heavily every year. A free calendar of auspicious times, checked by our partner astrologers, brings parents to the site, and it is the main entry point to the Traditions section.</li>
+        <li><strong>A yearly price guide:</strong> "How much does a wedding photographer cost in Sri Lanka in 2027?", built from real vendor packages. News sites will link to it.</li>
+        <li><strong>Pages in Sinhala and Tamil:</strong> there is far less competition for searches in these languages.</li>
+      </ul>
+      <h3>2. Growth built into the product</h3>
+      <ul class="list">
+        <li>Each invitation reaches about 300 guests. A quiet "Made with suba.lk" line, plus credits for the couple's vendors on the invitation, can bring thousands of visits a month.</li>
+        <li>Vendors share their suba.lk profile and reviews on their own pages, which advertises us for free.</li>
+        <li>Shared budgets: the couple invites parents to view their budget plan, which brings in a second person.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>3. Social media</h3>
+      <ul class="list">
+        <li>TikTok and Instagram Reels: real weddings, "what it really costs" breakdowns, vendor portraits. Three posts a week.</li>
+        <li>Facebook groups where couples already plan. Answer questions there, don't spam.</li>
+        <li>A WhatsApp channel with nakath dates and wedding-season deals.</li>
+      </ul>
+      <h3>4. Vendor sign-ups (on the ground)</h3>
+      <ul class="list">
+        <li>One full-time person signing up vendors, aiming for about 15 a day: visiting studios and salons, and meeting vendors at wedding fairs.</li>
+        <li>Founding vendor offer: Pro free for 6 months and a "Founding vendor" badge for the first 300 vendors.</li>
+        <li>We build their profile for them from their Facebook page in about 10 minutes, so they don't have to fill in anything.</li>
+      </ul>
+      <h3>5. Partnerships</h3>
+      <ul class="list">
+        <li>Hotel banquet teams, bridal fairs, and banks (loans and card offers).</li>
+        <li>Sri Lankan community groups abroad, for couples planning a wedding back home.</li>
+      </ul>
+      <h3>Targets</h3>
+      <table>
+        <tr><th>By</th><th class="num">Visits / month</th><th class="num">Quote requests / month</th></tr>
+        <tr><td>Month 6</td><td class="num">60,000</td><td class="num">800</td></tr>
+        <tr><td>Month 12</td><td class="num">250,000</td><td class="num">4,000</td></tr>
+        <tr><td>Month 24</td><td class="num">800,000</td><td class="num">15,000</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="folio"><span>suba.lk plan</span><span>6</span></div>
+</section>
+
+<!-- 7. REDESIGN / IA -->
+<section class="page">
+  <div class="kicker">Redesign</div>
+  <h2>Site structure and design direction</h2>
+  <div class="grid2">
+    <div>
+      <h3>Main menu (the same on every page)</h3>
+      <table>
+        <tr><th>Section</th><th>Pages</th></tr>
+        <tr><td><strong>Plan</strong></td><td>Budget, checklist, guest list, nakath calendar</td></tr>
+        <tr><td><strong>Find &amp; book</strong></td><td>Venues, photographers, decor, salons, cars, DJs, fragrance, other</td></tr>
+        <tr><td><strong>Traditions</strong></td><td>Astrologers, ashtaka, Magul Bera drummers, guides for each tradition</td></tr>
+        <tr><td><strong>Invite</strong></td><td>Online invitations, printed cards, RSVP</td></tr>
+        <tr><td><strong>Ideas</strong></td><td>Real weddings, price guides, inspiration</td></tr>
+        <tr><td><strong>For vendors</strong></td><td>List your business, plans, vendor dashboard</td></tr>
+      </table>
+      <h3>Web addresses (good for search)</h3>
+      <p class="small" style="font-family:Menlo,monospace; line-height:1.8">/si/photographers/kandy<br>/en/vendors/studio-lumiere<br>/en/plan/budget · /si/nakath/2027<br>/en/ideas/poruwa-decor<br>/app (the couple's workspace) · /vendor (the vendor's dashboard)</p>
+      <h3>What happens to the current app</h3>
+      <p>The invitation editor, RSVP, seating, gallery and reminders stay as they are and become the <strong>Invite</strong> section of the couple's workspace. The current landing page is replaced by the hub home page. The marketing parts that break our design rules (sparkle icons, frosted-glass effects, about 570 hard-coded colours) are cleaned up at the same time.</p>
+    </div>
+    <div>
+      <h3>Design direction</h3>
+      <p>Calm, editorial and trustworthy, like a well-printed wedding programme. Photos of real work do the talking, and the layout stays out of the way.</p>
+      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:2mm; margin:3mm 0">
+        <div><div style="height:14mm;border-radius:6px;background:var(--accent)"></div><p class="small" style="margin-top:1mm">Temple maroon<br><span class="muted">main colour</span></p></div>
+        <div><div style="height:14mm;border-radius:6px;background:var(--leaf)"></div><p class="small" style="margin-top:1mm">Betel leaf<br><span class="muted">confirmed / free</span></p></div>
+        <div><div style="height:14mm;border-radius:6px;background:var(--gold)"></div><p class="small" style="margin-top:1mm">Brass<br><span class="muted">ratings, featured</span></p></div>
+        <div><div style="height:14mm;border-radius:6px;background:var(--ink)"></div><p class="small" style="margin-top:1mm">Ink<br><span class="muted">text</span></p></div>
+        <div><div style="height:14mm;border-radius:6px;background:var(--surface);border:1px solid var(--line)"></div><p class="small" style="margin-top:1mm">Ivory<br><span class="muted">background</span></p></div>
+      </div>
+      <ul class="list">
+        <li><strong>Fonts:</strong> a serif for headings, plain sans-serif for interface text, Noto Sans Sinhala and Noto Sans Tamil for those languages.</li>
+        <li><strong>Prices are always visible</strong> as "From Rs. 85,000". Showing real prices is what sets us apart.</li>
+        <li><strong>One main button per screen:</strong> "Request quote" or "Check date", never both.</li>
+        <li><strong>Built for phones first</strong> (360 px wide): filters open as a bottom sheet, buttons are at least 44 px, and pages load fast on 4G.</li>
+        <li><strong>Trust signals:</strong> verified badge, reviews only from couples who booked, response time, "member since".</li>
+        <li><strong>Traditional decoration only where it belongs:</strong> the moonstone motif on Traditions pages and invitation templates, never in dashboards.</li>
+        <li>Keep the existing design rules: no gradients, no glass effects, no sparkle icons.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="folio"><span>suba.lk plan</span><span>7</span></div>
+</section>
+
+<!-- 8. MOCKUP: HOME DESKTOP -->
+<section class="page">
+  <div class="kicker">Mockup 1 of 6 · Home page, desktop</div>
+  <h2>The hub home page</h2>
+  <div class="browser">
+    <div class="chrome"><i></i><i></i><i></i><span class="url">suba.lk/en</span></div>
+    <div class="scr">
+      <div class="m-nav">
+        <div class="logo">suba<b>.lk</b></div>
+        <div class="m-links"><span>Plan</span><span class="on">Find &amp; book</span><span>Traditions</span><span>Invite</span><span>Ideas</span><span>For vendors</span></div>
+        <div class="row" style="gap:2mm"><span class="small muted" style="font-size:6.5pt">සිං · த · EN</span><span class="btn ghost">Sign in</span></div>
+      </div>
+      <div style="display:grid; grid-template-columns:1.15fr 1fr; gap:6mm; padding:8mm 8mm 6mm">
+        <div>
+          <div style="font-family:var(--serif); font-size:20pt; line-height:1.1">Plan your wedding.<br>Book people you can trust.</div>
+          <p style="color:var(--muted); font-size:8pt; margin:3mm 0 4mm; max-width:52ch">Clear prices and free dates from 1,200 Sri Lankan wedding vendors, plus your budget, guest list and invitations in one place.</p>
+          <div style="display:grid; grid-template-columns:1.2fr 1fr 0.9fr auto; gap:1.5mm; background:var(--raised); border:1px solid var(--line); border-radius:var(--r-md); padding:1.5mm">
+            <div class="input" style="border:none">Photographers ▾</div>
+            <div class="input" style="border:none; border-left:1px solid var(--line); border-radius:0">Kandy</div>
+            <div class="input" style="border:none; border-left:1px solid var(--line); border-radius:0">14 Feb 2027</div>
+            <span class="btn">Search</span>
+          </div>
+          <p class="small muted" style="font-size:6.3pt; margin-top:2mm">Popular: Poruwa decor · Kandyan bridal dressing · Vintage cars · Ashtaka</p>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; grid-template-rows:24mm 24mm; gap:1.5mm">
+          <div class="ph m" style="grid-row:span 2">Real wedding photo · Studio Lumière, Kandy</div>
+          <div class="ph y">Poruwa decor</div>
+          <div class="ph g">Kandyan dressing</div>
+        </div>
+      </div>
+      <div style="padding:0 8mm 5mm">
+        <div class="row" style="margin-bottom:2mm"><strong style="font-size:8pt">Browse by service</strong><span class="muted" style="font-size:6.5pt">All 16 services →</span></div>
+        <div style="display:grid; grid-template-columns:repeat(8,1fr); gap:1.5mm">
+          <div class="box" style="padding:2mm"><strong>Venues</strong><br><span class="muted">312 listed</span></div>
+          <div class="box" style="padding:2mm"><strong>Photographers</strong><br><span class="muted">248</span></div>
+          <div class="box" style="padding:2mm"><strong>Decor</strong><br><span class="muted">164</span></div>
+          <div class="box" style="padding:2mm"><strong>Salons</strong><br><span class="muted">131</span></div>
+          <div class="box" style="padding:2mm"><strong>Cars</strong><br><span class="muted">96</span></div>
+          <div class="box" style="padding:2mm"><strong>DJs &amp; bands</strong><br><span class="muted">88</span></div>
+          <div class="box" style="padding:2mm"><strong>Astrologers</strong><br><span class="muted">42</span></div>
+          <div class="box" style="padding:2mm"><strong>Ashtaka</strong><br><span class="muted">27</span></div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:4mm; padding:4mm 8mm 8mm; border-top:1px solid var(--line); background:var(--sunk)">
+        <div><strong style="font-size:7.5pt">Budget planner</strong><p class="muted" style="font-size:6.5pt; margin-top:1mm">See where Rs. 3.5 million goes, using typical prices for your area.</p><div class="bar" style="margin-top:2mm"><span style="width:62%"></span></div></div>
+        <div><strong style="font-size:7.5pt">Nakath 2027</strong><p class="muted" style="font-size:6.5pt; margin-top:1mm">Auspicious Poruwa times for every month, checked by astrologers.</p><p style="font-size:6.5pt; margin-top:1.5mm" lang="si">පෙබරවාරි 14 · පෙ.ව. 9.42</p></div>
+        <div><strong style="font-size:7.5pt">Invitations</strong><p class="muted" style="font-size:6.5pt; margin-top:1mm">Send every guest a personal WhatsApp link and track RSVPs.</p><p style="font-size:6.5pt; margin-top:1.5mm; color:var(--accent)">From Rs. 2,900 →</p></div>
+      </div>
+    </div>
+  </div>
+  <p class="caption"><strong>One clear starting point:</strong> search by service, city and date. Free tools sit below as the second way in. Vendor counts are shown so couples can see the site is busy. The figures shown are target numbers for month 12.</p>
+  <div class="folio"><span>suba.lk plan</span><span>8</span></div>
+</section>
+
+<!-- 9. MOCKUPS: LISTING + PROFILE (mobile) -->
+<section class="page">
+  <div class="kicker">Mockups 2 and 3 of 6 · Search results and vendor profile, phone</div>
+  <h2>Finding and booking a photographer</h2>
+  <div style="display:flex; gap:10mm; justify-content:flex-start; margin-top:4mm">
+    <div>
+      <div class="phone"><div class="scr">
+        <div class="sbar"><span>9:41</span><span>4G ▮▮▮</span></div>
+        <div class="m-nav" style="padding:2mm 3mm"><span class="logo" style="font-size:9pt">suba<b>.lk</b></span><span class="muted">☰</span></div>
+        <div style="padding:3mm">
+          <div style="font-family:var(--serif); font-size:11pt; line-height:1.15">Wedding photographers in Kandy</div>
+          <p class="muted" style="margin:1mm 0 2mm">48 free on 14 Feb 2027 · Prices include tax</p>
+          <span class="chip on">Free on my date</span><span class="chip">Under Rs. 150k</span><span class="chip">Filters</span>
+          <div style="margin-top:2mm; border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden; background:var(--raised)">
+            <div class="ph m" style="height:18mm; border-radius:0">Portfolio photo</div>
+            <div style="padding:2mm 2.5mm">
+              <div class="row"><strong style="font-size:7.8pt">Studio Lumière</strong><span><span class="star">★</span> 4.9 (86)</span></div>
+              <p class="muted">Kandy · Verified · Replies in about 2 hours</p>
+              <div class="row" style="margin-top:1.5mm"><span>From <strong>Rs. 125,000</strong></span><span style="color:var(--leaf); font-weight:600">● Free</span></div>
+            </div>
+          </div>
+          <div style="margin-top:2mm; border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden; background:var(--raised)">
+            <div class="ph y" style="height:10mm; border-radius:0">Portfolio photo</div>
+            <div style="padding:2mm 2.5mm">
+              <div class="row"><strong style="font-size:7.8pt">Hill Country Frames</strong><span><span class="star">★</span> 4.7 (41)</span></div>
+              <p class="muted">Peradeniya · Featured</p>
+              <div class="row" style="margin-top:1.5mm"><span>From <strong>Rs. 95,000</strong></span><span style="color:var(--leaf); font-weight:600">● Free</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="position:absolute; left:3mm; right:3mm; bottom:3mm"><span class="btn block">Get quotes from up to 5</span></div>
+      </div></div>
+      <p class="caption" style="width:64mm"><strong>Search results:</strong> price, rating and whether the date is free are shown on every card. The button at the bottom sends one quote request to several photographers.</p>
+    </div>
+    <div>
+      <div class="phone"><div class="scr">
+        <div class="sbar"><span>9:41</span><span>4G ▮▮▮</span></div>
+        <div class="ph m" style="height:22mm; border-radius:0">Cover photo · ← Back</div>
+        <div style="padding:3mm">
+          <div class="row"><div style="font-family:var(--serif); font-size:11pt">Studio Lumière</div><span><span class="star">★</span> 4.9</span></div>
+          <p class="muted">Wedding photography · Kandy · since 2016</p>
+          <div style="display:flex; gap:3mm; margin:2mm 0; border-bottom:1px solid var(--line); padding-bottom:1.5mm"><strong>Packages</strong><span class="muted">Work</span><span class="muted">Reviews</span><span class="muted">About</span></div>
+          <div class="box" style="padding:2mm; margin-bottom:1.5mm; border-color:var(--ink)">
+            <div class="row"><strong>Poruwa + Homecoming</strong><strong>Rs. 185,000</strong></div>
+            <p class="muted" style="margin-top:0.5mm">2 photographers · 1 videographer · 40-page album · drone</p>
+          </div>
+          <div class="box" style="padding:2mm; margin-bottom:2mm">
+            <div class="row"><strong>Poruwa only</strong><strong>Rs. 125,000</strong></div>
+            <p class="muted" style="margin-top:0.5mm">1 photographer · 300 edited photos · 20-page album</p>
+          </div>
+          <strong>February 2027</strong>
+          <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:0.8mm; margin-top:1.2mm; text-align:center; font-size:6pt">
+            <span class="muted">M</span><span class="muted">T</span><span class="muted">W</span><span class="muted">T</span><span class="muted">F</span><span class="muted">S</span><span class="muted">S</span>
+            <span>8</span><span>9</span><span style="text-decoration:line-through" class="muted">10</span><span>11</span><span>12</span><span style="text-decoration:line-through" class="muted">13</span><span style="background:var(--accent); color:var(--surface); border-radius:3px">14</span>
+            <span>15</span><span>16</span><span>17</span><span style="text-decoration:line-through" class="muted">18</span><span>19</span><span style="text-decoration:line-through" class="muted">20</span><span>21</span>
+          </div>
+          <p class="muted" style="margin-top:2mm">Hold the date with a 20% deposit (Rs. 37,000). Full refund within 7 days.</p>
+        </div>
+        <div style="position:absolute; left:3mm; right:3mm; bottom:3mm"><span class="btn block">Reserve 14 Feb · Rs. 37,000</span></div>
+      </div></div>
+      <p class="caption" style="width:64mm"><strong>Vendor profile:</strong> packages with real prices, a calendar of free dates, and a reserve button that shows the deposit amount and refund terms up front.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:6mm">Reviews can only be written by couples who booked through suba.lk, and each one is marked "Booked on suba.lk". This is the best protection against fake reviews and the main reason couples will trust the site.</div>
+  <div class="folio"><span>suba.lk plan</span><span>9</span></div>
+</section>
+
+<!-- 10. MOCKUPS: BUDGET + QUOTES -->
+<section class="page">
+  <div class="kicker">Mockups 4 and 5 of 6 · Budget planner and quote comparison, phone</div>
+  <h2>Planning the money, comparing the offers</h2>
+  <div style="display:flex; gap:10mm; margin-top:4mm">
+    <div>
+      <div class="phone"><div class="scr">
+        <div class="sbar"><span>9:41</span><span>4G ▮▮▮</span></div>
+        <div class="m-nav" style="padding:2mm 3mm"><span><strong>My wedding</strong></span><span class="muted">Budget</span></div>
+        <div style="padding:3mm">
+          <p class="muted">Kasun &amp; Dilini · 14 Feb 2027 · 280 guests</p>
+          <div style="font-family:var(--serif); font-size:15pt; margin-top:1.5mm">Rs. 2.18M <span class="muted" style="font-size:8pt; font-family:var(--sans)">of Rs. 3.5M</span></div>
+          <div class="bar" style="margin:1.5mm 0 3mm"><span style="width:62%"></span></div>
+          <div style="display:grid; gap:2.2mm">
+            <div><div class="row"><span>Venue &amp; catering</span><strong>Rs. 1,450,000</strong></div><div class="bar"><span style="width:100%" class="l"></span></div><p class="muted" style="font-size:6pt">Booked · Hotel Suisse · Rs. 5,180 per plate</p></div>
+            <div><div class="row"><span>Photography</span><strong>Rs. 185,000</strong></div><div class="bar"><span style="width:100%" class="l"></span></div><p class="muted" style="font-size:6pt">Deposit paid · Studio Lumière</p></div>
+            <div><div class="row"><span>Bridal dressing</span><strong>Rs. 120,000</strong></div><div class="bar"><span style="width:40%" class="y"></span></div><p class="muted" style="font-size:6pt">Quote received · 3 salons</p></div>
+            <div><div class="row"><span>Decor &amp; Poruwa</span><span class="muted">est. Rs. 250,000</span></div><div class="bar"><span style="width:0"></span></div><p class="muted" style="font-size:6pt">Typical in Kandy: Rs. 180k–320k</p></div>
+            <div><div class="row"><span>Wedding car</span><span class="muted">est. Rs. 45,000</span></div><div class="bar"><span style="width:0"></span></div></div>
+            <div><div class="row"><span>Invitations</span><strong>Rs. 4,900</strong></div><div class="bar"><span style="width:100%" class="l"></span></div></div>
+          </div>
+        </div>
+        <div style="position:absolute; left:3mm; right:3mm; bottom:3mm"><span class="btn block">Find decorators within budget</span></div>
+      </div></div>
+      <p class="caption" style="width:64mm"><strong>Budget planner:</strong> free and open without signing up. Each booking updates the totals automatically. Lines without a vendor yet show typical local prices and link straight to vendors in that price range.</p>
+    </div>
+    <div>
+      <div class="phone"><div class="scr">
+        <div class="sbar"><span>9:41</span><span>4G ▮▮▮</span></div>
+        <div class="m-nav" style="padding:2mm 3mm"><span><strong>Quotes · Bridal dressing</strong></span><span class="muted">3 of 5</span></div>
+        <div style="padding:3mm">
+          <p class="muted">Your request: Kandyan bride + 4 bridesmaids, 14 Feb, Kandy, trial included.</p>
+          <div style="display:grid; gap:2mm; margin-top:2.5mm">
+            <div class="box" style="padding:2.2mm; border-color:var(--ink)">
+              <div class="row"><strong>Salon Ayesha</strong><strong>Rs. 118,000</strong></div>
+              <p class="muted"><span class="star">★</span> 4.8 · includes jewellery hire · replied in 3 h</p>
+              <div class="row" style="margin-top:1.5mm"><span class="btn" style="padding:1.2mm 2.5mm">Accept</span><span class="muted">Message</span></div>
+            </div>
+            <div class="box" style="padding:2.2mm">
+              <div class="row"><strong>Kandy Bridal House</strong><strong>Rs. 96,500</strong></div>
+              <p class="muted"><span class="star">★</span> 4.6 · jewellery not included (+Rs. 25,000)</p>
+            </div>
+            <div class="box" style="padding:2.2mm">
+              <div class="row"><strong>Lotus Brides</strong><strong>Rs. 142,000</strong></div>
+              <p class="muted"><span class="star">★</span> 4.9 · two trials · home visit</p>
+            </div>
+            <div class="box" style="padding:2.2mm; background:var(--sunk); border-style:dashed">
+              <p class="muted">2 salons are still preparing a quote. We'll WhatsApp you when they reply.</p>
+            </div>
+          </div>
+        </div>
+      </div></div>
+      <p class="caption" style="width:64mm"><strong>Quote comparison:</strong> one request, quotes in the same format side by side, with what is and isn't included spelled out. Accepting a quote adds it to the budget.</p>
+    </div>
+  </div>
+  <div class="folio"><span>suba.lk plan</span><span>10</span></div>
+</section>
+
+<!-- 11. MOCKUP: VENDOR DASHBOARD + TRADITIONS -->
+<section class="page">
+  <div class="kicker">Mockup 6 of 6 · Vendor dashboard, desktop</div>
+  <h2>What vendors see, and why they pay</h2>
+  <div class="browser">
+    <div class="chrome"><i></i><i></i><i></i><span class="url">suba.lk/vendor</span></div>
+    <div class="scr" style="display:grid; grid-template-columns:34mm 1fr">
+      <div style="border-right:1px solid var(--line); padding:4mm 3mm; background:var(--raised); font-size:7pt; display:grid; gap:2.2mm; align-content:start">
+        <div class="logo" style="font-size:9.5pt; margin-bottom:2mm">suba<b>.lk</b></div>
+        <strong>Overview</strong><span class="muted">Quote requests</span><span class="muted">Calendar</span><span class="muted">Packages</span><span class="muted">Reviews</span><span class="muted">Payouts</span><span class="muted">Plan · Pro</span>
+      </div>
+      <div style="padding:5mm">
+        <div class="row"><div><div style="font-family:var(--serif); font-size:13pt">Good morning, Studio Lumière</div><p class="muted">November · Pro plan · profile 92% complete</p></div><span class="btn">Reply to 4 requests</span></div>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:2.5mm; margin:4mm 0">
+          <div class="box" style="padding:2.5mm"><span class="muted">Profile views</span><div style="font-family:var(--serif); font-size:13pt">3,412</div><span style="color:var(--leaf)">+18% vs Oct</span></div>
+          <div class="box" style="padding:2.5mm"><span class="muted">Quote requests</span><div style="font-family:var(--serif); font-size:13pt">27</div><span class="muted">4 waiting for a reply</span></div>
+          <div class="box" style="padding:2.5mm"><span class="muted">Bookings</span><div style="font-family:var(--serif); font-size:13pt">6</div><span class="muted">Rs. 1.02M booked</span></div>
+          <div class="box" style="padding:2.5mm"><span class="muted">Typical reply time</span><div style="font-family:var(--serif); font-size:13pt">2 h 10 m</div><span class="muted">Top 10% in Kandy</span></div>
+        </div>
+        <table style="font-size:7pt">
+          <tr><th>Couple</th><th>Date</th><th>Request</th><th>Budget</th><th>Received</th></tr>
+          <tr><td>Kasun &amp; Dilini</td><td>14 Feb 2027</td><td>Poruwa + homecoming, drone</td><td>Rs. 150–200k</td><td>12 min ago</td></tr>
+          <tr><td>Ravi &amp; Priya</td><td>28 Mar 2027</td><td>Hindu ceremony, 2 days</td><td>Rs. 250k+</td><td>2 h ago</td></tr>
+          <tr><td>Nimal &amp; Sachini</td><td>6 Jun 2027</td><td>Poruwa only</td><td>Rs. 100–130k</td><td>Yesterday</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <p class="caption"><strong>Why vendors pay for Pro:</strong> it shows them how many views and requests suba.lk sent, and how much they booked as a result. Seeing that it pays for itself is what keeps them subscribed. Fast replies help a vendor rank higher, so the service gets better for couples too.</p>
+
+  <h3 style="margin-top:7mm">The Traditions section works differently</h3>
+  <div class="grid2">
+    <div class="box">
+      <h3>Astrologers and nakath</h3>
+      <p class="small">Astrologers are checked before they're listed, and couples book a consultation with them (in person, by phone or by video), either to match horoscopes or to set the Poruwa time. The free nakath calendar is the main way people find this section. The tone stays respectful: no "lucky score" gimmicks.</p>
+    </div>
+    <div class="box">
+      <h3>Ashtaka and chanting</h3>
+      <p class="small">Each profile includes an audio sample, and couples can pick whether the ashtaka is performed in Sinhala or Pali. Booked together with Magul Bera drummers and Jayamangala Gatha groups. Most listings are in Sinhala, so these pages are written in Sinhala first.</p>
+    </div>
+  </div>
+  <div class="folio"><span>suba.lk plan</span><span>11</span></div>
+</section>
+
+<!-- 12. TECH -->
+<section class="page">
+  <div class="kicker">Building it</div>
+  <h2>Technical plan: build on what you already have</h2>
+  <p>The current code (Next.js 16, Postgres with Drizzle, Better Auth, next-intl, PayHere) is a good foundation for a marketplace. We extend it rather than rewrite it. The invitation features stay as they are.</p>
+  <div class="grid2">
+    <div>
+      <h3>New database tables</h3>
+      <table style="font-size:8.3pt">
+        <tr><th>Table</th><th>What it stores</th></tr>
+        <tr><td>vendors</td><td>The business profile, owner, city, verification status, plan</td></tr>
+        <tr><td>categories</td><td>The 16 services, with names in 3 languages</td></tr>
+        <tr><td>packages</td><td>Name, price, what's included, in 3 languages</td></tr>
+        <tr><td>availability</td><td>Dates a vendor is blocked or booked</td></tr>
+        <tr><td>quote_requests / quotes</td><td>Requests from couples and vendor replies</td></tr>
+        <tr><td>bookings</td><td>Deposit, status, refund state, PayHere order</td></tr>
+        <tr><td>reviews</td><td>Linked to a booking, so only real customers can review</td></tr>
+        <tr><td>weddings, budget_items</td><td>The couple's plan. Existing invitations link to it.</td></tr>
+        <tr><td>subscriptions, payouts</td><td>Vendor plans and what we owe vendors</td></tr>
+        <tr><td>leads</td><td>Phone and WhatsApp taps, so we can show vendors what we sent them</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>Main technical choices</h3>
+      <ul class="list">
+        <li><strong>Search:</strong> start with the search built into Postgres (no extra service), then move to a dedicated search engine like Meilisearch once there are over 5,000 listings.</li>
+        <li><strong>Photos:</strong> Cloudflare R2 storage with uploads sent straight from the browser, resized automatically. This also fixes the current problem of uploads being saved on the server's own disk.</li>
+        <li><strong>Payments:</strong> PayHere for deposits and vendor plans. At first we pay vendors by weekly bank transfer and keep a record of every payment. Automatic splitting of payments can come later.</li>
+        <li><strong>Messages:</strong> WhatsApp click-to-chat links at first, then the official WhatsApp Business API for quote alerts.</li>
+        <li><strong>Search engines:</strong> pages are generated on the server, with structured data (LocalBusiness, AggregateRating, Offer) and a sitemap for each language.</li>
+        <li><strong>Speed:</strong> category pages are cached and refreshed every hour, so they stay fast on 4G.</li>
+        <li><strong>Admin panel:</strong> approve vendors, moderate reviews, handle disputes and refunds.</li>
+      </ul>
+      <h3>Fix before launch (from the code review)</h3>
+      <ul class="list">
+        <li>Remove the hard-coded PayHere secret that's used when the setting is missing.</li>
+        <li>Move uploads to R2 and add rate limits.</li>
+        <li>Pin package versions and replace hard-coded colours with design tokens.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="folio"><span>suba.lk plan</span><span>12</span></div>
+</section>
+
+<!-- 13. ROADMAP -->
+<section class="page">
+  <div class="kicker">Roadmap</div>
+  <h2>Twelve months, four phases</h2>
+  <table>
+    <tr><th style="width:17%">Phase</th><th style="width:47%">What we ship</th><th>How we know it worked</th></tr>
+    <tr><td><strong>0 · Clean-up</strong><br><span class="muted">Weeks 1–3</span></td><td>Fix the 3 launch blockers, launch the invitation app on suba.lk, set up analytics and Search Console, register the company and sign the PayHere merchant agreement.</td><td>First 20 paid invitations. No serious errors.</td></tr>
+    <tr><td><strong>1 · Directory</strong><br><span class="muted">Months 1–3</span></td><td>New home page and navigation. Vendor profiles and packages. Venues, photographers, decor, salons and cars. Quote requests. Budget planner. Nakath 2027 calendar. City pages for search. Founding-vendor sign-up campaign.</td><td>300 live vendors, 20,000 visits a month, 300 quote requests a month, 50% of requests getting a reply within 24 hours.</td></tr>
+    <tr><td><strong>2 · Bookings</strong><br><span class="muted">Months 4–6</span></td><td>Availability calendars and deposits via PayHere. Reviews from real bookings. Pro and Premium vendor plans, featured listings. DJs, astrologers, ashtaka, fragrance. Printed card orders with 2 partner printers.</td><td>40 paying vendors, 100 bookings a month, Rs. 0.9M monthly revenue.</td></tr>
+    <tr><td><strong>3 · Scale</strong><br><span class="muted">Months 7–12</span></td><td>Wedding loans with 1–2 partner lenders. Installable phone app (PWA). WhatsApp Business alerts. Ideas section and real weddings. Full Tamil, Muslim and Christian wedding coverage. Expand to Galle, Kurunegala and Jaffna.</td><td>250,000 visits a month, 180 paying vendors, Rs. 3M+ monthly revenue.</td></tr>
+  </table>
+
+  <div class="grid2" style="margin-top:4mm">
+    <div>
+      <h3>Team (minimum)</h3>
+      <ul class="list">
+        <li>2 developers (the owners). One focuses on the marketplace, the other on content and growth tools.</li>
+        <li>1 person signing up vendors, paid a base salary plus a bonus per paying vendor.</li>
+        <li>1 part-time content creator (Sinhala and English) for social media and price guides.</li>
+        <li>Later: customer support for couples and vendors, and someone to handle disputes.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Numbers to track every week</h3>
+      <ul class="list">
+        <li>Live vendors in each category and city.</li>
+        <li>Quote requests, the share that get a reply, and how fast.</li>
+        <li>Bookings, and the value of deposits paid through us.</li>
+        <li>Visits from Google, broken down by language.</li>
+        <li>Vendors who stopped paying, and why.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="folio"><span>suba.lk plan</span><span>13</span></div>
+</section>
+
+<!-- 14. RISKS -->
+<section class="page">
+  <div class="kicker">Risks and next steps</div>
+  <h2>What could go wrong, and what to do this week</h2>
+  <table>
+    <tr><th style="width:26%">Risk</th><th>What we do about it</th></tr>
+    <tr><td>Not enough vendors, so couples leave</td><td>Launch city by city and category by category. Only advertise a category once it has at least 15 real vendors in that city.</td></tr>
+    <tr><td>Vendors take bookings outside suba.lk</td><td>Charge mainly through plans and leads, not only commission. Give couples a reason to book on suba.lk: the deposit is protected, and only booked couples can leave reviews.</td></tr>
+    <tr><td>Deposit disputes and refunds</td><td>A written cancellation policy for every booking, deposits held until the agreed date, and one person who handles disputes.</td></tr>
+    <tr><td>Fake reviews or fake vendors</td><td>Only couples who booked can review. Vendors are verified (business registration or national ID, plus photos of real work).</td></tr>
+    <tr><td>Personal data (PDPA No. 9 of 2022)</td><td>Collect as little as possible, let people export or delete their data, set retention periods, and get a short review from a local lawyer.</td></tr>
+    <tr><td>Wedding loans and financial rules</td><td>We only refer couples. We never lend, take applications or hold borrowers' money. We sign a referral agreement with CBSL-licensed lenders only.</td></tr>
+    <tr><td>Sensitive traditional services</td><td>Use respectful wording, no fortune-telling gimmicks, and write the Traditions content with astrologers and cultural advisors.</td></tr>
+    <tr><td>Two owners, unclear roles</td><td>Write a shareholder agreement: who owns what share, who decides what, what happens if one owner leaves. Do this before taking money from anyone.</td></tr>
+  </table>
+
+  <h3>The next 7 days</h3>
+  <ul class="list">
+    <li><strong>Day 1–2:</strong> both owners agree on this plan, the company structure and the 6-month budget.</li>
+    <li><strong>Day 2–4:</strong> fix the 3 launch blockers in the current code and put the invitation app live on suba.lk.</li>
+    <li><strong>Day 3–7:</strong> visit 30 vendors (photographers, salons, decorators) in one city. Ask what they pay for advertising today and whether they'd pay Rs. 3,900 a month for real leads. Write down every answer.</li>
+    <li><strong>Day 5–7:</strong> start building the vendor database tables and profile pages (Phase 1, week 1).</li>
+  </ul>
+  <div class="note">The vendor interviews are the most important step this week. If fewer than 1 in 3 vendors would pay, change the prices before building the booking system.</div>
+  <div class="folio"><span>suba.lk plan</span><span>14</span></div>
+</section>
+
+</body>
+</html>

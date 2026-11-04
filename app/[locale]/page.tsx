@@ -1,6 +1,7 @@
 import { setRequestLocale } from "next-intl/server";
 import { SiteHeader } from "@/components/marketing/site-header";
 import { Hero } from "@/components/marketing/hero";
+import { HubHome } from "@/components/hub/hub-home";
 import { DesignsCarousel } from "@/components/marketing/designs-carousel";
 import { HowItWorks } from "@/components/marketing/how-it-works";
 import { FeaturesShowcase } from "@/components/marketing/features-showcase";
@@ -27,6 +28,7 @@ export default async function HomePage({ params }: HomePageProps) {
     <div className="flex min-h-screen flex-col bg-[var(--surface)] text-[var(--ink)]">
       <SiteHeader />
       <main>
+        <HubHome />
         <Hero />
         <DesignsCarousel />
         <HowItWorks />

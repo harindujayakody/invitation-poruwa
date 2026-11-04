@@ -6,17 +6,19 @@
 :root,
 :root:root {
   /* Colour (OKLCH, tinted neutrals) */
-  --surface: oklch(0.985 0.006 85);
-  --surface-raised: oklch(0.995 0.004 85);
+  --surface: oklch(0.985 0.012 15); /* blush ivory */
+  --surface-raised: oklch(0.997 0.005 15);
   --ink: oklch(0.22 0.015 60);
   --ink-muted: oklch(0.40 0.015 60);
-  --line: oklch(0.90 0.01 80);
-  --accent: oklch(0.42 0.12 25);
+  --line: oklch(0.91 0.03 10);
+  --accent: oklch(0.52 0.15 5);
   --accent-ink: oklch(0.985 0.006 85);
-  --accent-rose: oklch(0.58 0.22 15);
-  --accent-gold: oklch(0.72 0.14 75);
+  --accent-rose: oklch(0.64 0.18 5);
+  --accent-gold: oklch(0.8 0.12 80);
+  --accent-blush: oklch(0.94 0.04 5);  /* soft pink fills: chips, tiles */
+  --accent-mint: oklch(0.94 0.04 165); /* soft "free / confirmed" fills */
   --danger: oklch(0.52 0.19 27);
-  --success: oklch(0.52 0.12 155);
+  --success: oklch(0.55 0.11 165);
 
   /* Spacing (4px base) */
   --space-1: 0.25rem;
@@ -29,10 +31,10 @@
   --space-18: 4.5rem;
   --space-28: 7rem;
 
-  /* Radius: no pills except toggles and avatars */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  /* Radius: soft and rounded ("cute" direction, Nov 2026); still no pill badges above headlines */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
 
   /* Type scale: 1.25 ratio, fluid */
   --text-xs: clamp(0.78rem, 0.76rem + 0.1vw, 0.84rem);
@@ -65,11 +67,11 @@
   --popover-foreground: var(--ink);
   --primary: var(--accent-rose);
   --primary-foreground: #ffffff;
-  --secondary: oklch(0.955 0.008 85);
+  --secondary: var(--accent-blush);
   --secondary-foreground: var(--ink);
-  --muted: oklch(0.955 0.008 85);
+  --muted: oklch(0.96 0.015 15);
   --muted-foreground: var(--ink-muted);
-  --accent-surface: oklch(0.955 0.008 85);
+  --accent-surface: var(--accent-blush);
   --destructive: var(--danger);
   --border: var(--line);
   --input: var(--line);
