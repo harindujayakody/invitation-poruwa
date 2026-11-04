@@ -128,29 +128,24 @@ async function main() {
         title: "පොරුව චාරිත්‍රය",
         startsAt: new Date("2026-12-21T09:42:00Z"),
         venue: "The Kingsbury, Colombo",
-        address: "Janadhipathi Mawatha, Colombo 01",
-        sortOrder: 0,
+        sort: 0,
       });
 
       // Add sample guests
-      await db.insert(guests).values([
-        {
-          invitationId: newInvite.id,
-          name: "Kasun Jayasuriya",
-          partySize: 2,
-          phone: "+94771234567",
-          token: "kasun-sample-token-128bit",
-          deliveryStatus: "delivered",
-        },
-        {
-          invitationId: newInvite.id,
-          name: "Dr. & Mrs. Wickramasinghe",
-          partySize: 3,
-          phone: "+94719876543",
-          token: "wickrama-sample-token-128bit",
-          deliveryStatus: "delivered",
-        },
-      ]);
+      await db.insert(guests).values({
+        invitationId: newInvite.id,
+        name: "Kasun Jayasuriya",
+        headsInvited: 2,
+        phoneE164: "+94771234567",
+        token: "kasun-sample-token-128bit",
+      });
+      await db.insert(guests).values({
+        invitationId: newInvite.id,
+        name: "Dr. & Mrs. Wickramasinghe",
+        headsInvited: 3,
+        phoneE164: "+94719876543",
+        token: "wickrama-sample-token-128bit",
+      });
       console.log("Added sample guests to invitation.");
     }
   }

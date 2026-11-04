@@ -154,7 +154,7 @@ export default async function DashboardPage({ params }: DashboardPageProps) {
                   )}
 
                   <Link
-                    href={`/app/invitations/${inv.id}`}
+                    href={`/app/invitations/${inv.id}/edit`}
                     className="inline-flex items-center gap-[var(--space-1)] rounded-[var(--radius-md)] bg-[var(--surface-muted)] px-[var(--space-3)] py-[var(--space-2)] text-[length:var(--text-xs)] font-medium text-[var(--ink)] transition-colors hover:bg-[var(--line)] focus:outline-none focus:ring-1 focus:ring-[var(--focus)]"
                     style={{ minHeight: "var(--target)" }}
                   >
