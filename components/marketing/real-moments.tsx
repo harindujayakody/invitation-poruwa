@@ -112,25 +112,18 @@ export function RealMoments() {
   const isTamil = locale === "ta";
 
   return (
-    <section className="py-[var(--space-18)] bg-[var(--surface)] border-b border-[var(--line)]">
+    <section className="py-20 md:py-24 bg-[var(--surface)] border-b border-[var(--line)]">
       <div className="mx-auto max-w-6xl px-[var(--space-6)] md:px-[var(--space-12)]">
         {/* Section Header */}
-        <div className="max-w-2xl space-y-2 text-left">
-          <span className="text-[length:var(--text-xs)] font-bold tracking-widest text-rose-600 uppercase">
-            {isSinhala
-              ? "සැබෑ මංගල අවස්ථා"
-              : isTamil
-              ? "உண்மையான திருமணங்கள்"
-              : "REAL EXPERIENCES"}
-          </span>
-          <h2 className="font-display text-[length:var(--text-3xl)] font-bold tracking-tight text-[var(--ink)] sm:text-4xl">
+        <div className="max-w-3xl space-y-3 text-left">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--ink)]">
             {isSinhala
               ? "සැබෑ මංගල සැමරුම්, සජීවීව"
               : isTamil
               ? "நேரடி திருமண கொண்டாட்டங்கள்"
               : "Real moments, real celebrations"}
           </h2>
-          <p className="text-[length:var(--text-base)] text-[var(--ink-muted)]">
+          <p className="text-base sm:text-lg text-[var(--ink-muted)] leading-relaxed">
             {isSinhala
               ? "ශ්‍රී ලාංකික යුවළවල් අපගේ ඩිජිටල් ආරාධනා සමඟ තම විශේෂ දිනය සමරන ආකාරය බලන්න."
               : isTamil
@@ -140,7 +133,7 @@ export function RealMoments() {
         </div>
 
         {/* Video Cards Grid / Carousel */}
-        <div className="mt-[var(--space-10)] flex gap-[var(--space-5)] overflow-x-auto pb-4 scrollbar-thin">
+        <div className="mt-12 flex gap-6 overflow-x-auto pb-6 scrollbar-thin">
           {MOMENTS.map((m) => {
             const coupleName =
               isSinhala ? m.couple.si : isTamil ? m.couple.ta : m.couple.en;
@@ -151,7 +144,7 @@ export function RealMoments() {
             return (
               <div
                 key={m.id}
-                className="group relative flex-none w-[220px] sm:w-[240px] h-[360px] rounded-3xl overflow-hidden border border-stone-200/60 bg-stone-900 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                className="group relative flex-none w-[260px] sm:w-[280px] h-[390px] rounded-3xl overflow-hidden border border-stone-200/60 bg-stone-900 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
               >
                 {/* Visual Backdrop with Rich Cultural Ambiance */}
                 <div
@@ -168,34 +161,34 @@ export function RealMoments() {
                 />
 
                 {/* Top Badge: Duration & Audio indicator */}
-                <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between text-[11px] text-white/90">
-                  <span className="rounded-full bg-black/40 backdrop-blur-md px-2.5 py-0.5 font-medium border border-white/10">
+                <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between text-xs text-white/90">
+                  <span className="rounded-full bg-black/40 backdrop-blur-md px-3 py-1 font-medium border border-white/10">
                     {m.duration}
                   </span>
-                  <span className="rounded-full bg-rose-600/90 px-2 py-0.5 text-[10px] font-semibold text-white">
+                  <span className="rounded-full bg-rose-600/90 px-2.5 py-0.5 text-[11px] font-semibold text-white">
                     HD
                   </span>
                 </div>
 
-                {/* Center Play Button Overlay */}
+                {/* Center Play Button Overlay with generous hit target */}
                 <button
                   type="button"
                   onClick={() => setActiveMoment(isPlaying ? null : m.id)}
                   aria-label={`Play highlight of ${coupleName}`}
-                  className="absolute inset-0 m-auto h-14 w-14 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-lg transition-transform duration-300 group-hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
+                  className="absolute inset-0 m-auto h-16 w-16 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-xl transition-transform duration-300 group-hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
                 >
-                  <Play className="h-6 w-6 ml-0.5 fill-white text-white" />
+                  <Play className="h-7 w-7 ml-1 fill-white text-white" />
                 </button>
 
                 {/* Bottom Overlay with Couple & Venue Details */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 z-10 bg-gradient-to-t from-black via-black/80 to-transparent">
-                  <h3 className="font-display text-base font-bold text-white tracking-tight leading-snug">
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-10 bg-gradient-to-t from-black via-black/80 to-transparent">
+                  <h3 className="font-display text-lg font-bold text-white tracking-tight leading-snug">
                     {coupleName}
                   </h3>
-                  <p className="text-xs text-amber-200/90 mt-0.5 font-medium truncate">
+                  <p className="text-xs text-amber-200/90 mt-1 font-medium truncate">
                     {eventName}
                   </p>
-                  <p className="text-[11px] text-stone-400 mt-0.5 truncate">
+                  <p className="text-xs text-stone-400 mt-0.5 truncate">
                     {m.venue}
                   </p>
                 </div>

@@ -69,7 +69,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#fcf9f2] via-[#fbf8f0] to-[#f7f2e7] pt-[var(--space-8)] pb-[var(--space-18)] md:pt-[var(--space-12)] md:pb-[var(--space-28)]">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#fcf9f2] via-[#fbf8f0] to-[#f7f2e7] pt-12 pb-20 md:pt-16 md:pb-28">
       {/* Subtle radial ambient warmth backdrop */}
       <div
         className="pointer-events-none absolute -top-40 right-0 h-[600px] w-[600px] rounded-full opacity-30 blur-3xl"
@@ -82,8 +82,8 @@ export function Hero() {
       <div className="mx-auto max-w-6xl px-[var(--space-6)] md:px-[var(--space-12)]">
         <div className="grid grid-cols-1 items-center gap-[var(--space-12)] lg:grid-cols-12 lg:gap-[var(--space-8)]">
           {/* Left Column: Headline, Description & CTAs */}
-          <div className="lg:col-span-7 space-y-[var(--space-6)] text-left">
-            <h1 className="font-display text-[length:var(--text-3xl)] font-bold tracking-tight text-[var(--ink)] leading-[1.12] sm:text-5xl lg:text-6xl">
+          <div className="lg:col-span-7 space-y-6 text-left">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[var(--ink)] leading-[1.12]">
               {isSinhala ? (
                 <>
                   ඔබගේ මංගල ආරාධනය,{" "}
@@ -102,7 +102,7 @@ export function Hero() {
               )}
             </h1>
 
-            <p className="text-[length:var(--text-lg)] text-[var(--ink-muted)] leading-[1.6] max-w-[50ch]">
+            <p className="text-lg sm:text-xl text-[var(--ink-muted)] leading-relaxed max-w-[54ch]">
               {isSinhala
                 ? "සෑම අමුත්තෙකුටම පුද්ගලික සබැඳියක්, සජීවී RSVP ප්‍රතිචාර, ආසන සැලැස්ම සහ උත්සව කාලසටහන සමඟ විනාඩි දහයකින් සාදාගන්න."
                 : isTamil
@@ -110,19 +110,19 @@ export function Hero() {
                 : "A beautiful invitation site with RSVP, every event and a personal link for each guest. Built in ten minutes."}
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-[var(--space-4)] pt-[var(--space-2)]">
+            {/* CTAs with generous tactile padding */}
+            <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link
-                href="/login"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-rose-600 px-[var(--space-6)] py-[var(--space-3)] text-[length:var(--text-base)] font-semibold text-white shadow-md transition-all duration-200 hover:bg-rose-700 hover:shadow-lg hover:-translate-y-0.5 min-h-[var(--target)]"
+                href="/login?mode=signup"
+                className="inline-flex items-center justify-center gap-2.5 rounded-full bg-rose-600 px-8 py-3.5 text-base font-semibold text-white shadow-md transition-all duration-200 hover:bg-rose-700 hover:shadow-lg hover:-translate-y-0.5 min-h-[48px]"
               >
                 <span>{isSinhala ? "නොමිලේ අරඹන්න" : isTamil ? "இலவசமாகத் தொடங்குங்கள்" : "Start free"}</span>
-                <ArrowRight className="h-4 w-4" strokeWidth={2} />
+                <ArrowRight className="h-4.5 w-4.5" strokeWidth={2} />
               </Link>
 
               <Link
                 href="/samples/poruwa-traditional"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-stone-300 bg-white/90 px-[var(--space-5)] py-[var(--space-3)] text-[length:var(--text-base)] font-medium text-stone-800 shadow-xs transition-all duration-200 hover:bg-stone-50 hover:border-stone-400 min-h-[var(--target)]"
+                className="inline-flex items-center justify-center gap-2.5 rounded-full border border-stone-300 bg-white px-7 py-3.5 text-base font-medium text-stone-800 shadow-xs transition-all duration-200 hover:bg-stone-50 hover:border-stone-400 min-h-[48px]"
               >
                 <div className="flex h-5 w-5 items-center justify-center rounded-full bg-stone-100 text-stone-700">
                   <Play className="h-2.5 w-2.5 fill-stone-700 translate-x-0.5" />
@@ -132,17 +132,17 @@ export function Hero() {
             </div>
 
             {/* Value bullets */}
-            <div className="pt-[var(--space-4)] grid grid-cols-1 sm:grid-cols-3 gap-[var(--space-3)] text-[length:var(--text-xs)] text-[var(--ink-muted)]">
+            <div className="pt-4 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs sm:text-sm text-[var(--ink-muted)]">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" strokeWidth={2} />
+                <CheckCircle2 className="h-4.5 w-4.5 text-emerald-600 shrink-0" strokeWidth={2} />
                 <span>Sinhala, Tamil & English</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" strokeWidth={2} />
+                <CheckCircle2 className="h-4.5 w-4.5 text-emerald-600 shrink-0" strokeWidth={2} />
                 <span>128-bit secure guest links</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" strokeWidth={2} />
+                <CheckCircle2 className="h-4.5 w-4.5 text-emerald-600 shrink-0" strokeWidth={2} />
                 <span>Under 150 KB fast load</span>
               </div>
             </div>
