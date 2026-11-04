@@ -41,7 +41,7 @@ export function CalendarLinks({
     const icsContent = [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
-      "PRODID:-//wedding.lk//Wedding Invitation//EN",
+      "PRODID:-//suba.lk//Wedding Invitation//EN",
       "BEGIN:VEVENT",
       `SUMMARY:${title}`,
       `DTSTART:${startTime}`,

@@ -46,7 +46,7 @@ export default async function EntranceSignPage({ params }: EntrancePageProps) {
   const venue = parsedContent.success ? parsedContent.data.events?.[0]?.venue : null;
 
   // Generate SVG QR Code targeting public table locator
-  // In production: https://wedding.lk/${locale}/i/${inv.slug}/tables
+  // In production: https://suba.lk/${locale}/i/${inv.slug}/tables
   const tableLocatorPath = `/${locale}/i/${inv.slug}/tables`;
   const qrSvg = await QRCode.toString(tableLocatorPath, {
     type: "svg",

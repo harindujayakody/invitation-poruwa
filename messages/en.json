@@ -156,7 +156,7 @@
   },
   "guests": {
     "title": "Guests & WhatsApp Delivery",
-    "subtitle": "Manage guest invites for wedding.lk/i/{slug} and send personal links via WhatsApp.",
+    "subtitle": "Manage guest invites for suba.lk/i/{slug} and send personal links via WhatsApp.",
     "backToDashboard": "Back to dashboard",
     "metricTotalGuests": "Total Guests",
     "metricTotalHeads": "Total Heads (Seats)",
@@ -247,11 +247,11 @@
     "statusAccepted": "Attending ({count} seats)",
     "statusDeclined": "Declined with regrets",
     "languageSwitcher": "Language",
-    "footerText": "Created with love on wedding.lk"
+    "footerText": "Created with love on suba.lk"
   },
   "rsvpTracker": {
     "title": "RSVP Tracker",
-    "subtitle": "Live guest responses and banquet headcount for wedding.lk/i/{slug}",
+    "subtitle": "Live guest responses and banquet headcount for suba.lk/i/{slug}",
     "backToDashboard": "Back to dashboard",
     "metricAttendingHeads": "Attending Heads",
     "metricTotalInvited": "Total Invited Heads",
@@ -278,7 +278,7 @@
   },
   "publish": {
     "title": "Publish & Pay",
-    "subtitle": "Review your wedding invitation suite and choose your publishing plan for wedding.lk/i/{slug}",
+    "subtitle": "Review your wedding invitation suite and choose your publishing plan for suba.lk/i/{slug}",
     "backToDashboard": "Back to dashboard",
     "checklistTitle": "Pre-Publish Checklist",
     "checkNames": "Couple names configured",
@@ -320,7 +320,7 @@
   },
   "seating": {
     "title": "Seating Plan & Table Layout",
-    "subtitle": "Arrange banquet tables and assign guests for wedding.lk/i/{slug}",
+    "subtitle": "Arrange banquet tables and assign guests for suba.lk/i/{slug}",
     "backToDashboard": "Back to dashboard",
     "metricTotalTables": "Total Tables",
     "metricAssignedHeads": "Seated Heads",
@@ -387,7 +387,7 @@
   },
   "gallery": {
     "title": "Guest Photo Stream & Moderation",
-    "subtitle": "Review candid photos shared live by wedding guests for wedding.lk/i/{slug}",
+    "subtitle": "Review candid photos shared live by wedding guests for suba.lk/i/{slug}",
     "backToDashboard": "Back to dashboard",
     "metricTotalPhotos": "Total Uploads",
     "metricApproved": "Approved Live",
@@ -425,11 +425,11 @@
     "noPhotosYet": "No approved photos in the gallery yet. Be the first to share a moment!",
     "liveBadge": "Live Reception Stream",
     "uploadedBy": "Guest Photo",
-    "footerText": "Created with love on wedding.lk"
+    "footerText": "Created with love on suba.lk"
   },
   "reminders": {
     "title": "RSVP Reminders & Delivery Tracking",
-    "subtitle": "Monitor link delivery status and send polite WhatsApp reminders for wedding.lk/i/{slug}",
+    "subtitle": "Monitor link delivery status and send polite WhatsApp reminders for suba.lk/i/{slug}",
     "backToDashboard": "Back to dashboard",
     "metricTotalGuests": "Total Guests",
     "metricSent": "Invitations Sent",

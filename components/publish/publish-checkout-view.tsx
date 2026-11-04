@@ -148,7 +148,7 @@ export function PublishCheckoutView({
                 {publishedAt ? t("publishedOn", { date: new Date(publishedAt).toLocaleDateString(locale) }) : ""}
               </p>
               <p className="font-mono text-[length:var(--text-xs)] text-[var(--ink)] pt-1">
-                wedding.lk/i/{slug}
+                suba.lk/i/{slug}
               </p>
             </div>
 

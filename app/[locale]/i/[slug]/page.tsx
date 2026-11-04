@@ -187,7 +187,7 @@ export default async function GuestInvitationPage({
       <header className="w-full max-w-2xl px-[var(--space-4)] py-[var(--space-3)] flex items-center justify-between text-[length:var(--text-xs)]">
         <div className="flex items-center gap-[var(--space-1)] text-[var(--ink-muted)]">
           <Heart className="h-3.5 w-3.5 text-[var(--accent)]" strokeWidth={1.5} />
-          <span className="font-serif italic">wedding.lk</span>
+          <span className="font-serif italic font-medium">suba.lk</span>
         </div>
 
         <nav

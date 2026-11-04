@@ -156,7 +156,7 @@
   },
   "guests": {
     "title": "ආරාධිතයින් සහ WhatsApp පණිවිඩ",
-    "subtitle": "wedding.lk/i/{slug} සඳහා ආරාධිතයින් කළමනාකරණය කර WhatsApp හරහා පුද්ගලික සබැඳි යවන්න.",
+    "subtitle": "suba.lk/i/{slug} සඳහා ආරාධිතයින් කළමනාකරණය කර WhatsApp හරහා පුද්ගලික සබැඳි යවන්න.",
     "backToDashboard": "නැවත පුවරුවට",
     "metricTotalGuests": "මුළු ආරාධිතයින් සංඛ්‍යාව",
     "metricTotalHeads": "මුළු ආසන (පුද්ගලයින්)",
@@ -247,11 +247,11 @@
     "statusAccepted": "සහභාගී වේ (ආසන {count})",
     "statusDeclined": "සහභාගී විය නොහැක",
     "languageSwitcher": "භාෂාව",
-    "footerText": "wedding.lk මඟින් ආදරයෙන් නිර්මාණය කරන ලදී"
+    "footerText": "suba.lk මඟින් ආදරයෙන් නිර්මාණය කරන ලදී"
   },
   "rsvpTracker": {
     "title": "ප්‍රතිචාර (RSVP) ලුහුබැඳීම",
-    "subtitle": "wedding.lk/i/{slug} සඳහා ආරාධිතයින්ගේ සජීවී ප්‍රතිචාර සහ ආසන සංඛ්‍යා ලේඛන",
+    "subtitle": "suba.lk/i/{slug} සඳහා ආරාධිතයින්ගේ සජීවී ප්‍රතිචාර සහ ආසන සංඛ්‍යා ලේඛන",
     "backToDashboard": "නැවත පුවරුවට",
     "metricAttendingHeads": "සහභාගී වන ආසන",
     "metricTotalInvited": "මුළු ආරාධිත ආසන",
@@ -278,7 +278,7 @@
   },
   "publish": {
     "title": "ප්‍රකාශනය සහ ගෙවීම්",
-    "subtitle": "wedding.lk/i/{slug} සඳහා ඔබගේ ආරාධනා පත්‍රය පරීක්ෂා කර ප්‍රකාශන සැලැස්ම තෝරන්න",
+    "subtitle": "suba.lk/i/{slug} සඳහා ඔබගේ ආරාධනා පත්‍රය පරීක්ෂා කර ප්‍රකාශන සැලැස්ම තෝරන්න",
     "backToDashboard": "නැවත පුවරුවට",
     "checklistTitle": "ප්‍රකාශනයට පෙර පිරික්සුම් ලැයිස්තුව",
     "checkNames": "දෙපළගේ නම් නිවැරදිව සකසා ඇත",
@@ -320,7 +320,7 @@
   },
   "seating": {
     "title": "ආසන සැකසුම සහ මේස සැලැස්ම",
-    "subtitle": "wedding.lk/i/{slug} සඳහා හෝටල් මේස සැලසුම් කර ආරාධිතයින් වෙන් කරන්න",
+    "subtitle": "suba.lk/i/{slug} සඳහා හෝටල් මේස සැලසුම් කර ආරාධිතයින් වෙන් කරන්න",
     "backToDashboard": "නැවත පුවරුවට",
     "metricTotalTables": "මුළු මේස ගණන",
     "metricAssignedHeads": "ආසන වෙන් කළ ගණන",
@@ -387,7 +387,7 @@
   },
   "gallery": {
     "title": "සජීවී ඡායාරූප ගැලරිය සහ අනුමැතිය",
-    "subtitle": "wedding.lk/i/{slug} සඳහා ආරාධිතයින් සජීවීව එක් කරන ලද ඡායාරූප පරීක්ෂා කර අනුමත කරන්න",
+    "subtitle": "suba.lk/i/{slug} සඳහා ආරාධිතයින් සජීවීව එක් කරන ලද ඡායාරූප පරීක්ෂා කර අනුමත කරන්න",
     "backToDashboard": "නැවත පුවරුවට",
     "metricTotalPhotos": "මුළු ඡායාරූප",
     "metricApproved": "අනුමත කළ ඡායාරූප",
@@ -425,11 +425,11 @@
     "noPhotosYet": "තවමත් ගැලරියේ අනුමත ඡායාරූප නොමැත. පළමු ඡායාරූපය ඔබ එක් කරන්න!",
     "liveBadge": "සජීවී උත්සව ගැලරිය",
     "uploadedBy": "ආරාධිත ඡායාරූපය",
-    "footerText": "wedding.lk මඟින් ආදරයෙන් නිර්මාණය කරන ලදී"
+    "footerText": "suba.lk මඟින් ආදරයෙන් නිර්මාණය කරන ලදී"
   },
   "reminders": {
     "title": "RSVP සිහිකැඳවීම් සහ ලුහුබැඳීම",
-    "subtitle": "ආරාධනා සබැඳි විවෘත කළ තත්ත්වය පරීක්ෂා කර ආරාධිතයින්ට WhatsApp හරහා සිහිකැඳවීම් යවන්න (wedding.lk/i/{slug})",
+    "subtitle": "ආරාධනා සබැඳි විවෘත කළ තත්ත්වය පරීක්ෂා කර ආරාධිතයින්ට WhatsApp හරහා සිහිකැඳවීම් යවන්න (suba.lk/i/{slug})",
     "backToDashboard": "නැවත පුවරුවට",
     "metricTotalGuests": "මුළු ආරාධිතයින්",
     "metricSent": "යවන ලද ආරාධනා",

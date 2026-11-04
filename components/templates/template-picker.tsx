@@ -298,7 +298,7 @@ export function TemplatePicker({ locale }: TemplatePickerProps) {
               </label>
               <div className="mt-[var(--space-1)] flex items-center rounded-[var(--radius-md)] border border-[var(--line)] bg-[var(--surface)] px-[var(--space-3)] py-[var(--space-1)] focus-within:border-[var(--focus)] focus-within:ring-1 focus-within:ring-[var(--focus)]">
                 <span className="text-[length:var(--text-xs)] text-[var(--ink-muted)]">
-                  wedding.lk/i/
+                  suba.lk/i/
                 </span>
                 <input
                   id="invitation-slug"

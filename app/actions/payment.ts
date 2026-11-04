@@ -85,7 +85,7 @@ export async function createCheckoutOrderAction(formData: {
     cancel_url: `${appUrl}/app/invitations/${inv.id}/publish?status=cancelled`,
     notify_url: `${appUrl}/api/webhooks/payhere`,
     order_id: order.id,
-    items: `wedding.lk ${planConfig.id.toUpperCase()} Plan - ${inv.slug}`,
+    items: `suba.lk ${planConfig.id.toUpperCase()} Plan - ${inv.slug}`,
     amount: planConfig.priceLkr.toFixed(2),
     currency: "LKR",
     hash,

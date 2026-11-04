@@ -64,7 +64,7 @@ export function CostComparison() {
             </div>
           </div>
 
-          {/* Invitation.lk Digital Wedding */}
+          {/* Suba.lk Digital Wedding */}
           <div className="relative rounded-2xl border-2 border-rose-600 bg-white p-7 shadow-xl flex flex-col justify-between">
             <div className="absolute -top-3.5 right-6 rounded-full bg-rose-600 px-3.5 py-0.5 text-[11px] font-bold text-white uppercase tracking-wider shadow-sm">
               93% SAVINGS
@@ -74,7 +74,7 @@ export function CostComparison() {
               <div className="flex items-center justify-between border-b border-stone-200 pb-4">
                 <div>
                   <h3 className="font-display text-lg font-bold text-stone-900">
-                    Invitation.lk Digital Platform
+                    Suba.lk Digital Platform
                   </h3>
                   <p className="text-xs text-stone-700">One-time payment, publish forever</p>
                 </div>

@@ -42,7 +42,7 @@ test.describe("Guest List Management, CSV Import & WhatsApp Click-to-Send Flow",
 
     // 5. Verify initial empty state & metrics
     await expect(page.getByRole("heading", { name: "Guests & WhatsApp Delivery" })).toBeVisible();
-    await expect(page.getByText(`Manage guest invites for wedding.lk/i/${testSlug}`)).toBeVisible();
+    await expect(page.getByText(`Manage guest invites for suba.lk/i/${testSlug}`)).toBeVisible();
     await expect(page.getByText("Total Guests")).toBeVisible();
     await expect(page.getByText("No guests added yet")).toBeVisible();
 

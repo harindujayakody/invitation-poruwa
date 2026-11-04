@@ -20,7 +20,7 @@ export function SiteHeader() {
           <Heart className="h-4 w-4 fill-white text-white" strokeWidth={1.5} />
         </div>
         <span className="font-display tracking-tight text-[length:var(--text-lg)] uppercase">
-          Invitation<span className="text-rose-600">.lk</span>
+          Suba<span className="text-rose-600">.lk</span>
         </span>
       </Link>
 

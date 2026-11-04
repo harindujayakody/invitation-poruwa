@@ -107,7 +107,7 @@ export function EntranceSignView({
             />
             <div className="mt-[var(--space-2)] inline-flex items-center gap-1.5 text-[length:var(--text-xs)] text-[var(--ink-muted)] font-mono">
               <QrCode className="h-3.5 w-3.5 text-[var(--accent)]" strokeWidth={1.5} />
-              <span>wedding.lk/i/{slug}/tables</span>
+              <span>suba.lk/i/{slug}/tables</span>
             </div>
           </div>
 
@@ -117,7 +117,7 @@ export function EntranceSignView({
               {t("scanToFindTable")}
             </h2>
             <p className="text-[length:var(--text-xs)] text-[var(--ink-muted)] leading-relaxed">
-              {t("instruction", { url: tableLocatorUrl || `wedding.lk/i/${slug}/tables` })}
+              {t("instruction", { url: tableLocatorUrl || `suba.lk/i/${slug}/tables` })}
             </p>
           </div>
         </div>

@@ -137,7 +137,7 @@ export function InvitationEditor({
             {t("invitationUrl")}:
           </span>
           <p className="font-mono text-[length:var(--text-sm)] font-medium text-[var(--ink)]">
-            wedding.lk/i/{slug}
+            suba.lk/i/{slug}
           </p>
         </div>
 

@@ -52,7 +52,7 @@ test.describe("Cultural Templates & Live Preview Editor Flow", () => {
     await page.waitForURL("**/en/app/invitations/**/edit", { timeout: 15000 });
 
     // 7. Verify Editor interface
-    await expect(page.getByText(`wedding.lk/i/${testSlug}`)).toBeVisible();
+    await expect(page.getByText(`suba.lk/i/${testSlug}`)).toBeVisible();
     await expect(page.locator("#partner-one")).toHaveValue("Saman");
     await expect(page.locator("#partner-two")).toHaveValue("Kavindi");
 
