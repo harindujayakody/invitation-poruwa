@@ -63,8 +63,8 @@
   --card-foreground: var(--ink);
   --popover: var(--surface-raised);
   --popover-foreground: var(--ink);
-  --primary: var(--accent);
-  --primary-foreground: var(--accent-ink);
+  --primary: var(--accent-rose);
+  --primary-foreground: #ffffff;
   --secondary: oklch(0.955 0.008 85);
   --secondary-foreground: var(--ink);
   --muted: oklch(0.955 0.008 85);
@@ -73,7 +73,7 @@
   --destructive: var(--danger);
   --border: var(--line);
   --input: var(--line);
-  --ring: var(--accent);
+  --ring: var(--accent-rose);
   --radius: var(--radius-md);
 }
 

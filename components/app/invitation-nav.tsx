@@ -57,10 +57,10 @@ export function InvitationNav({ invitationId }: InvitationNavProps) {
   ];
 
   return (
-    <div className="mb-[var(--space-6)] w-full overflow-x-auto border-b border-[var(--line)]">
+    <div className="mb-8 w-full overflow-x-auto scrollbar-none pb-2">
       <nav
         aria-label="Invitation sections"
-        className="flex min-w-max items-center gap-[var(--space-2)] pb-[var(--space-2)]"
+        className="inline-flex min-w-max items-center gap-1.5 rounded-2xl bg-stone-100 p-1.5 border border-stone-200/90 shadow-inner"
       >
         {tabs.map((tab) => {
           const isActive = pathname === tab.href || pathname.startsWith(tab.href);
@@ -70,18 +70,15 @@ export function InvitationNav({ invitationId }: InvitationNavProps) {
             <Link
               key={tab.href}
               href={tab.href}
-              className="inline-flex items-center gap-[var(--space-2)] rounded-[var(--radius-md)] px-[var(--space-4)] py-[var(--space-2)] text-[length:var(--text-sm)] font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-[var(--focus)]"
-              style={{
-                backgroundColor: isActive ? "var(--surface)" : "transparent",
-                color: isActive ? "var(--ink)" : "var(--ink-muted)",
-                border: isActive ? "1px solid var(--line)" : "1px solid transparent",
-                minHeight: "var(--target)",
-              }}
+              className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-semibold transition-all min-h-[40px] ${
+                isActive
+                  ? "bg-white text-stone-900 shadow-sm border border-stone-200/80"
+                  : "text-stone-600 hover:text-stone-900 hover:bg-white/60 border border-transparent"
+              }`}
             >
               <Icon
-                className="h-4 w-4"
-                style={{ color: isActive ? "var(--accent)" : "currentColor" }}
-                strokeWidth={1.5}
+                className={`h-4 w-4 ${isActive ? "text-rose-600" : "text-stone-500"}`}
+                strokeWidth={isActive ? 2 : 1.75}
               />
               <span>{tab.label}</span>
             </Link>

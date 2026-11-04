@@ -4,7 +4,8 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { authClient } from "@/lib/auth-client";
 import { LocaleSwitcher } from "@/components/common/locale-switcher";
-import { LogOut } from "lucide-react";
+import { Heart, LogOut, User } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface AppHeaderProps {
   user: {
@@ -22,41 +23,46 @@ export function AppHeader({ user }: AppHeaderProps) {
   }
 
   return (
-    <header
-      className="flex flex-wrap items-center justify-between gap-[var(--space-4)] px-[var(--space-6)] py-[var(--space-4)] md:px-[var(--space-12)]"
-      style={{
-        borderBottom: "1px solid var(--line)",
-        backgroundColor: "var(--surface)",
-      }}
-    >
-      <div className="flex items-center gap-[var(--space-4)]">
+    <header className="sticky top-0 z-40 flex flex-wrap items-center justify-between gap-4 border-b border-[var(--line)] bg-[var(--surface)]/95 px-[var(--space-6)] py-3 backdrop-blur-md md:px-[var(--space-12)]">
+      {/* Brand Wordmark & Heart Logo */}
+      <div className="flex items-center gap-4">
         <Link
           href="/app"
-          className="text-[length:var(--text-base)] font-semibold text-[var(--ink)] focus:outline-none focus:ring-1 focus:ring-[var(--focus)]"
-          style={{ minHeight: "var(--target)", display: "inline-flex", alignItems: "center" }}
+          className="flex items-center gap-2.5 text-[length:var(--text-lg)] font-bold tracking-tight text-[var(--ink)] focus:outline-none"
         >
-          Wedding
+          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-rose-600 text-white shadow-sm">
+            <Heart className="h-4.5 w-4.5 fill-white text-white" strokeWidth={1.5} />
+          </div>
+          <span className="font-display tracking-tight text-[length:var(--text-lg)] uppercase font-extrabold">
+            Suba<span className="text-rose-600">.lk</span>
+          </span>
         </Link>
-        <span
-          className="hidden text-[length:var(--text-xs)] text-[var(--ink-muted)] sm:inline-block"
-        >
-          {user.name ? `${user.name} (${user.email})` : user.email}
-        </span>
+
+        {/* User Pill Badge */}
+        <div className="hidden sm:inline-flex items-center gap-2 rounded-full border border-stone-200 bg-white px-3 py-1 text-xs text-stone-600 shadow-xs">
+          <div className="flex h-4 w-4 items-center justify-center rounded-full bg-rose-100 text-rose-700">
+            <User className="h-2.5 w-2.5" />
+          </div>
+          <span className="font-semibold text-stone-800">{user.name || "Couple Account"}</span>
+          <span className="text-stone-400">·</span>
+          <span className="text-stone-500 truncate max-w-[180px]">{user.email}</span>
+        </div>
       </div>
 
-      <div className="flex items-center gap-[var(--space-4)]">
+      <div className="flex items-center gap-3">
         <LocaleSwitcher />
 
-        <button
+        <Button
           type="button"
+          variant="outline"
+          size="sm"
           onClick={handleSignOut}
-          className="inline-flex items-center gap-[var(--space-2)] rounded-[var(--radius-md)] border border-[var(--line)] bg-[var(--surface)] px-[var(--space-3)] py-[var(--space-2)] text-[length:var(--text-xs)] font-medium text-[var(--ink)] transition-colors hover:bg-[var(--surface-muted)] focus:outline-none focus:ring-1 focus:ring-[var(--focus)] cursor-pointer"
-          style={{ minHeight: "var(--target)" }}
+          className="gap-2 text-xs font-semibold text-stone-700 hover:text-stone-900 border-stone-300"
           aria-label={t("signOut")}
         >
-          <LogOut className="h-4 w-4 text-[var(--ink-muted)]" strokeWidth={1.5} />
-          <span className="hidden sm:inline">{t("signOut")}</span>
-        </button>
+          <LogOut className="h-3.5 w-3.5 text-stone-500" strokeWidth={1.75} />
+          <span>{t("signOut")}</span>
+        </Button>
       </div>
     </header>
   );

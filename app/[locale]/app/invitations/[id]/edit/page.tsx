@@ -11,6 +11,7 @@ import { InvitationContent } from "@/lib/schema/invitation";
 import { InvitationNav } from "@/components/app/invitation-nav";
 import { Link } from "@/i18n/navigation";
 import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export const instant = false;
 
@@ -46,14 +47,12 @@ export default async function InvitationEditorPage({ params }: EditorPageProps) 
 
   return (
     <div className="mx-auto w-full max-w-6xl">
-      <div className="mb-[var(--space-6)]">
-        <Link
-          href="/app"
-          className="inline-flex items-center gap-[var(--space-2)] text-[length:var(--text-xs)] font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] focus:outline-none"
-          style={{ minHeight: "36px" }}
-        >
-          <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
-          <span>{t("backToDashboard")}</span>
+      <div className="mb-4">
+        <Link href="/app">
+          <Button variant="ghost" size="sm" className="gap-2 text-stone-600 hover:text-stone-900">
+            <ArrowLeft className="h-4 w-4" />
+            <span>{t("backToDashboard")}</span>
+          </Button>
         </Link>
       </div>
 
