@@ -1,0 +1,166 @@
+"use client";
+
+import { useLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { ArrowRight, Play, CheckCircle2 } from "lucide-react";
+import { PhoneMockupFrame } from "@/components/marketing/phone-mockup-frame";
+import { TemplateRenderer } from "@/components/templates/template-renderer";
+import { InvitationContent } from "@/lib/schema/invitation";
+
+export function Hero() {
+  const locale = useLocale();
+
+  const isSinhala = locale === "si";
+  const isTamil = locale === "ta";
+
+  // Authentic Sri Lankan couple sample content for the phone showcase
+  const sampleContent: InvitationContent = {
+    couple: {
+      partnerOne: isSinhala ? "දුල්හානි" : isTamil ? "துல்ஹானி" : "Dulhani",
+      partnerTwo: isSinhala ? "නිමේෂ්" : isTamil ? "நிமேஷ்" : "Nimesh",
+      partnerOneParents: isSinhala
+        ? "සුනිල් සහ චිත්‍රා පෙරේරා යුවළගේ පුත්"
+        : isTamil
+        ? "சுந்தரம் & லட்சுமி அவர்களின் புதல்வன்"
+        : "Son of Mr. & Mrs. S. Perera",
+      partnerTwoParents: isSinhala
+        ? "රංජිත් සහ හේමා ජයවර්ධන යුවළගේ දියණිය"
+        : isTamil
+        ? "சிவகுமார் & சாந்தி அவர்களின் புதல்வி"
+        : "Daughter of Mr. & Mrs. R. Jayawardena",
+    },
+    story: {
+      quote: isSinhala
+        ? "ආදරය ඉවසයි, කරුණාවන්තය. අපේ නව දිවි ගමනට ආශිර්වාද කරන්න."
+        : isTamil
+        ? "அன்பும் அமைதியும் நிறைந்த எங்கள் புதுவாழ்வுக்கு உங்கள் நல்வாழ்த்துக்களை வேண்டுகிறோம்."
+        : "Two souls, one sacred journey. Blessed to step forward together.",
+    },
+    events: [
+      {
+        id: "ev-poruwa",
+        title: isSinhala ? "පොරුව චාරිත්‍රය" : isTamil ? "பொருவா சடங்கு" : "Poruwa Ceremony",
+        venue: "The Kingsbury Hotel, Colombo",
+        startsAt: "09:42 AM",
+        address: "Janadhipathi Mawatha, Colombo 01",
+        mapUrl: "https://maps.google.com",
+        notes: isSinhala ? "සුබ නැකත: පෙ.ව. 09:42 ට" : "Nakath time: 09:42 AM",
+        sort: 0,
+      },
+      {
+        id: "ev-reception",
+        title: isSinhala ? "මංගල භෝජන සංග්‍රහය" : isTamil ? "திருமண வரவேற்பு" : "Wedding Reception",
+        venue: "The Balmoral Ballroom, Colombo",
+        startsAt: "12:30 PM",
+        address: "Janadhipathi Mawatha, Colombo 01",
+        mapUrl: "https://maps.google.com",
+        notes: isSinhala ? "දිවා භෝජනය සහ සුබපැතුම්" : "Lunch & celebrations",
+        sort: 1,
+      },
+    ],
+    eventDate: "2026-12-21T09:42:00.000Z",
+    sections: {
+      showCover: true,
+      showEvents: true,
+      showStory: true,
+      showRsvp: true,
+      showGifts: false,
+    },
+  };
+
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#fcf9f2] via-[#fbf8f0] to-[#f7f2e7] pt-[var(--space-8)] pb-[var(--space-18)] md:pt-[var(--space-12)] md:pb-[var(--space-28)]">
+      {/* Subtle radial ambient warmth backdrop */}
+      <div
+        className="pointer-events-none absolute -top-40 right-0 h-[600px] w-[600px] rounded-full opacity-30 blur-3xl"
+        style={{
+          background: "radial-gradient(circle, rgba(225, 29, 72, 0.25) 0%, rgba(217, 119, 6, 0.15) 50%, transparent 70%)",
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="mx-auto max-w-6xl px-[var(--space-6)] md:px-[var(--space-12)]">
+        <div className="grid grid-cols-1 items-center gap-[var(--space-12)] lg:grid-cols-12 lg:gap-[var(--space-8)]">
+          {/* Left Column: Headline, Description & CTAs */}
+          <div className="lg:col-span-7 space-y-[var(--space-6)] text-left">
+            <h1 className="font-display text-[length:var(--text-3xl)] font-bold tracking-tight text-[var(--ink)] leading-[1.12] sm:text-5xl lg:text-6xl">
+              {isSinhala ? (
+                <>
+                  ඔබගේ මංගල ආරාධනය,{" "}
+                  <span className="text-rose-600 block sm:inline">WhatsApp හරහා යවන්න.</span>
+                </>
+              ) : isTamil ? (
+                <>
+                  உங்கள் திருமண அழைப்பிதழ்,{" "}
+                  <span className="text-rose-600 block sm:inline">WhatsApp மூலம் பகிருங்கள்.</span>
+                </>
+              ) : (
+                <>
+                  Your wedding invitation,{" "}
+                  <span className="text-rose-600 block sm:inline">sent on WhatsApp.</span>
+                </>
+              )}
+            </h1>
+
+            <p className="text-[length:var(--text-lg)] text-[var(--ink-muted)] leading-[1.6] max-w-[50ch]">
+              {isSinhala
+                ? "සෑම අමුත්තෙකුටම පුද්ගලික සබැඳියක්, සජීවී RSVP ප්‍රතිචාර, ආසන සැලැස්ම සහ උත්සව කාලසටහන සමඟ විනාඩි දහයකින් සාදාගන්න."
+                : isTamil
+                ? "விருந்தினர் ஒவ்வொருவருக்கும் தனித்துவமான இணைப்பு, உடனடி RSVP மற்றும் நிகழ்வு விவரங்களுடன் 10 நிமிடங்களில் அழகான அழைப்பிதழ் தளம்."
+                : "A beautiful invitation site with RSVP, every event and a personal link for each guest. Built in ten minutes."}
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-[var(--space-4)] pt-[var(--space-2)]">
+              <Link
+                href="/login"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-rose-600 px-[var(--space-6)] py-[var(--space-3)] text-[length:var(--text-base)] font-semibold text-white shadow-md transition-all duration-200 hover:bg-rose-700 hover:shadow-lg hover:-translate-y-0.5 min-h-[var(--target)]"
+              >
+                <span>{isSinhala ? "නොමිලේ අරඹන්න" : isTamil ? "இலவசமாகத் தொடங்குங்கள்" : "Start free"}</span>
+                <ArrowRight className="h-4 w-4" strokeWidth={2} />
+              </Link>
+
+              <Link
+                href="/samples/poruwa-traditional"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-stone-300 bg-white/90 px-[var(--space-5)] py-[var(--space-3)] text-[length:var(--text-base)] font-medium text-stone-800 shadow-xs transition-all duration-200 hover:bg-stone-50 hover:border-stone-400 min-h-[var(--target)]"
+              >
+                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-stone-100 text-stone-700">
+                  <Play className="h-2.5 w-2.5 fill-stone-700 translate-x-0.5" />
+                </div>
+                <span>{isSinhala ? "සජීවී ආදර්ශය" : isTamil ? "நேரடி மாதிரி" : "Live demo"}</span>
+              </Link>
+            </div>
+
+            {/* Value bullets */}
+            <div className="pt-[var(--space-4)] grid grid-cols-1 sm:grid-cols-3 gap-[var(--space-3)] text-[length:var(--text-xs)] text-[var(--ink-muted)]">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" strokeWidth={2} />
+                <span>Sinhala, Tamil & English</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" strokeWidth={2} />
+                <span>128-bit secure guest links</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" strokeWidth={2} />
+                <span>Under 150 KB fast load</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: The iPhone 16 Pro Mockup */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <PhoneMockupFrame className="w-full">
+              <TemplateRenderer
+                templateId="poruwa-traditional"
+                content={sampleContent}
+                locale={locale}
+                isMockup={false}
+              />
+            </PhoneMockupFrame>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

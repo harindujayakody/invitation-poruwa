@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+
+# Environment files
+.env
+.env*.local
+.env.production
+.env.staging
+
+# Playwright & Testing artifacts
+playwright-report/
+test-results/
+blob-report/
+playwright/.cache/
+test-sketch-*.png
+screenshots-*/
+
+# User uploaded local media
+public/uploads/*
+!public/uploads/.gitkeep
+
+# TypeScript build info
+*.tsbuildinfo
+next-env.d.ts.bak
+
+# OS generated files
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

@@ -1,0 +1,14 @@
+/*
+  Font stacks. The --font-* variables are set by next/font in app/layout.tsx
+  (see snippets/layout.example.tsx). Latin faces are placeholders: choose deliberately
+  after /impeccable teach. Sinhala faces are Noto Sans/Serif Sinhala (OFL licence).
+*/
+:root {
+  --font-ui: var(--font-latin), var(--font-sinhala), system-ui, sans-serif;
+  --font-display: var(--font-latin-serif), var(--font-sinhala-serif), Georgia, serif;
+}
+
+:root { font-family: var(--font-ui); font-size: 100%; }
+:lang(si) { font-family: var(--font-sinhala), var(--font-latin), system-ui, sans-serif; }
+:lang(si) .font-display { font-family: var(--font-sinhala-serif), var(--font-latin-serif), serif; }
+.font-display { font-family: var(--font-display); }
