@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --webpack",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
@@ -47,5 +47,8 @@
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "latest"
+  },
+  "overrides": {
+    "magic-string": "0.30.17"
   }
 }
