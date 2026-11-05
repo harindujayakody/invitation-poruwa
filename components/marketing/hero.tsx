@@ -83,7 +83,7 @@ export function Hero() {
         <div className="grid grid-cols-1 items-center gap-[var(--space-12)] lg:grid-cols-12 lg:gap-[var(--space-8)]">
           {/* Left Column: Headline, Description & CTAs */}
           <div className="lg:col-span-7 space-y-6 text-left">
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[var(--ink)] leading-[1.12]">
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[var(--ink)] leading-[1.12]">
               {isSinhala ? (
                 <>
                   ඔබගේ මංගල ආරාධනය,{" "}
@@ -100,7 +100,7 @@ export function Hero() {
                   <span className="text-rose-600 block sm:inline">sent on WhatsApp.</span>
                 </>
               )}
-            </h1>
+            </h2>
 
             <p className="text-lg sm:text-xl text-[var(--ink-muted)] leading-relaxed max-w-[54ch]">
               {isSinhala

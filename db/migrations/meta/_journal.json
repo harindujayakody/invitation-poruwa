@@ -15,6 +15,13 @@
       "when": 1793737181656,
       "tag": "0001_needy_famine",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793835137864,
+      "tag": "0002_living_zzzax",
+      "breakpoints": true
     }
   ]
 }

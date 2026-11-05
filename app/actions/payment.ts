@@ -60,9 +60,11 @@ export async function createCheckoutOrderAction(formData: {
     })
     .returning();
 
-  const merchantId = process.env.PAYHERE_MERCHANT_ID || "1211149";
-  const merchantSecret =
-    process.env.PAYHERE_MERCHANT_SECRET || "4MjAxNDMxNzEyMjAxOTAxMzg=";
+  const merchantId = process.env.PAYHERE_MERCHANT_ID;
+  const merchantSecret = process.env.PAYHERE_MERCHANT_SECRET;
+  if (!merchantId || !merchantSecret) {
+    return { error: "payments_not_configured" };
+  }
   const isProduction = process.env.PAYHERE_MODE === "production";
 
   const hostHeader = (await headers()).get("host") || "localhost:3972";

@@ -4,6 +4,7 @@ import { db } from "@/db";
 import { invitations, guests, invitationEvents, rsvps, deliveries } from "@/db/schema";
 import { eq, and } from "drizzle-orm";
 import { z } from "zod";
+import { rateLimit } from "@/lib/rate-limit";
 
 const rsvpItemSchema = z.object({
   eventId: z.string().uuid(),
@@ -34,6 +35,11 @@ export async function submitRsvpAction(data: {
   }
 
   const { token, slug, responses } = parsed.data;
+
+  // Keyed by token so a leaked link can't be hammered; 20 submits per 10 minutes is plenty for a real guest.
+  if (!rateLimit(`rsvp:${token}`, 20, 10 * 60_000)) {
+    return { error: "too_many_requests" };
+  }
 
   // 1. Verify invitation exists
   const [inv] = await db

@@ -235,3 +235,57 @@ export const customDesignRequests = pgTable(
   ],
 );
 
+
+// ---------- Phase 1: vendor directory + quote requests ----------
+// Phase 1 launches five categories; add enum values as new categories open.
+export const vendorCategory = pgEnum("vendor_category", ["venue", "photographer", "decor", "salon", "car"]);
+export const quoteStatus = pgEnum("quote_status", ["new", "replied", "closed"]);
+
+export const vendors = pgTable(
+  "vendors",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    ownerId: text("owner_id").references(() => users.id, { onDelete: "set null" }),
+    slug: text("slug").notNull(),
+    name: text("name").notNull(),
+    category: vendorCategory("category").notNull(),
+    city: text("city").notNull(), // lowercase slug, e.g. "kandy"
+    description: text("description").notNull().default(""),
+    whatsapp: text("whatsapp"), // digits-only 94…, from normalizeLkPhone
+    priceFromLkr: integer("price_from_lkr"),
+    verified: boolean("verified").notNull().default(false),
+    published: boolean("published").notNull().default(true),
+    createdAt: createdAt(),
+  },
+  (t) => [uniqueIndex("vendors_slug_uq").on(t.slug), index("vendors_category_city_idx").on(t.category, t.city)],
+);
+
+export const vendorPackages = pgTable(
+  "vendor_packages",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    vendorId: uuid("vendor_id").notNull().references(() => vendors.id, { onDelete: "cascade" }),
+    name: text("name").notNull(),
+    priceLkr: integer("price_lkr").notNull(),
+    includes: text("includes").notNull().default(""),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("vendor_packages_vendor_idx").on(t.vendorId)],
+);
+
+export const quoteRequests = pgTable(
+  "quote_requests",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    vendorId: uuid("vendor_id").notNull().references(() => vendors.id, { onDelete: "cascade" }),
+    name: text("name").notNull(),
+    phone: text("phone").notNull(), // digits-only 94…, from normalizeLkPhone
+    eventDate: text("event_date"), // YYYY-MM-DD
+    guestCount: integer("guest_count"),
+    budgetLkr: integer("budget_lkr"),
+    message: text("message").notNull().default(""),
+    status: quoteStatus("status").notNull().default("new"),
+    createdAt: createdAt(),
+  },
+  (t) => [index("quote_requests_vendor_idx").on(t.vendorId)],
+);
