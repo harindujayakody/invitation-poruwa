@@ -22,10 +22,10 @@ export async function HubHome() {
           <option value="">{t("anyCity")}</option>
           {CITIES.map((c) => <option key={c} value={c}>{t(`cities.${c}`)}</option>)}
         </select>
-        <button className="min-h-[var(--target)] rounded-[var(--radius-md)] bg-[var(--accent)] px-[var(--space-6)] text-[length:var(--text-sm)] font-semibold text-[var(--accent-ink)]">{t("search")}</button>
+        <button className="min-h-[var(--target)] rounded-[var(--radius-pill)] bg-[var(--accent)] px-[var(--space-6)] text-[length:var(--text-sm)] font-semibold text-[var(--accent-ink)]">{t("search")}</button>
       </form>
 
-      <ul className="mt-[var(--space-8)] grid grid-cols-2 gap-[var(--space-3)] sm:grid-cols-5">
+      <ul className="mt-[var(--space-8)] grid grid-cols-2 gap-[var(--space-3)] sm:grid-cols-3">
         {CATEGORIES.map((c) => (
           <li key={c}>
             <Link href={`/vendors?category=${c}`} className="flex min-h-[var(--target)] items-center gap-[var(--space-2)] rounded-[var(--radius-lg)] bg-[var(--accent-blush)] p-[var(--space-4)] text-[length:var(--text-sm)] font-semibold text-[var(--ink)] transition-transform duration-[var(--dur-fast)] hover:-translate-y-0.5">

@@ -9,7 +9,8 @@
     "pricing": "Pricing",
     "login": "Log in",
     "dashboard": "Dashboard",
-    "getStarted": "Create your invitation"
+    "getStarted": "Create your invitation",
+    "getStartedShort": "Get started"
   },
   "hero": {
     "headline": "Your wedding invitation, personal to every guest",
@@ -578,7 +579,11 @@
       "photographer": "Photographers",
       "decor": "Decorations",
       "salon": "Bridal salons",
-      "car": "Wedding cars"
+      "car": "Wedding cars",
+      "dj": "DJs & bands",
+      "astrologer": "Astrologers",
+      "ashtaka": "Ashtaka",
+      "fragrance": "Fragrance & favours"
     },
     "cities": {
       "colombo": "Colombo",
@@ -586,6 +591,51 @@
       "kandy": "Kandy",
       "galle": "Galle",
       "negombo": "Negombo"
+    },
+    "checkDate": "Check a date",
+    "check": "Check",
+    "dateFree": "Free on this date",
+    "dateBooked": "Already booked on this date",
+    "navForVendors": "For vendors"
+  },
+  "vendorTools": {
+    "title": "Your business on suba.lk",
+    "intro": "List your services, show real prices, block booked dates and reply to couples' quote requests.",
+    "live": "Live",
+    "pending": "Waiting for approval",
+    "viewPublic": "View public page",
+    "quotes": "Quote requests",
+    "noQuotes": "No quote requests yet.",
+    "replyWhatsapp": "Reply on WhatsApp",
+    "mark": {
+      "replied": "Mark replied",
+      "closed": "Close"
+    },
+    "quoteStatus": {
+      "new": "New",
+      "replied": "Replied",
+      "closed": "Closed"
+    },
+    "remove": "Remove",
+    "packageName": "Package name",
+    "price": "Price (Rs.)",
+    "includes": "What's included",
+    "addPackage": "Add package",
+    "blockedDates": "Booked dates",
+    "blockDate": "Block date",
+    "addAnother": "Add another business",
+    "listBusiness": "List your business",
+    "businessName": "Business name",
+    "whatsapp": "WhatsApp number",
+    "priceFrom": "Starting price (Rs.)",
+    "description": "About your business",
+    "submit": "Submit for review",
+    "reviewNote": "Our team checks every listing before it goes live, usually within 2 working days.",
+    "status": {
+      "created": "Thanks! Your listing is waiting for approval.",
+      "saved": "Saved.",
+      "invalid": "Please check the details and try again.",
+      "unauthorized": "Please sign in again."
     }
   }
 }

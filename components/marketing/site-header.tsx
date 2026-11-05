@@ -16,49 +16,55 @@ export function SiteHeader() {
         href="/"
         className="flex items-center gap-2.5 text-[length:var(--text-lg)] font-bold tracking-tight text-[var(--ink)] focus:outline-none"
       >
-        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-rose-600 text-white shadow-sm">
-          <Heart className="h-4.5 w-4.5 fill-white text-white" strokeWidth={1.5} />
+        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--accent)] text-[var(--accent-ink)]">
+          <Heart className="h-4.5 w-4.5 fill-[var(--accent-ink)] text-[var(--accent-ink)]" strokeWidth={1.5} />
         </div>
         <span className="font-display tracking-tight text-[length:var(--text-lg)] uppercase font-extrabold">
-          Suba<span className="text-rose-600">.lk</span>
+          Suba<span className="text-[var(--accent)]">.lk</span>
         </span>
       </Link>
 
       {/* Navigation links */}
-      <nav className="flex items-center gap-[var(--space-6)]">
+      <nav className="flex items-center gap-[var(--space-4)]">
         <Link
           href="/vendors"
-          className="hidden text-[length:var(--text-sm)] font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] md:inline-flex md:items-center min-h-[var(--target)] px-2"
+          className="hidden text-[length:var(--text-sm)] font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] md:inline-flex md:items-center min-h-[var(--target)] px-1 whitespace-nowrap"
         >
           {tHub("navVendors")}
         </Link>
         <Link
           href="/plan/budget"
-          className="hidden text-[length:var(--text-sm)] font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] md:inline-flex md:items-center min-h-[var(--target)] px-2"
+          className="hidden text-[length:var(--text-sm)] font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] lg:inline-flex lg:items-center min-h-[var(--target)] px-1 whitespace-nowrap"
         >
           {tHub("navBudget")}
         </Link>
         <Link
+          href="/app/vendor"
+          className="hidden text-[length:var(--text-sm)] font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] xl:inline-flex xl:items-center min-h-[var(--target)] px-1 whitespace-nowrap"
+        >
+          {tHub("navForVendors")}
+        </Link>
+        <Link
           href="/templates"
-          className="hidden text-[length:var(--text-sm)] font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] md:inline-flex md:items-center min-h-[var(--target)] px-2"
+          className="hidden text-[length:var(--text-sm)] font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] xl:inline-flex xl:items-center min-h-[var(--target)] px-1 whitespace-nowrap"
         >
           {t("templates")}
         </Link>
         <Link
           href="/#how-it-works"
-          className="hidden text-[length:var(--text-sm)] font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] lg:inline-flex lg:items-center min-h-[var(--target)] px-2"
+          className="hidden text-[length:var(--text-sm)] font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] 2xl:inline-flex 2xl:items-center min-h-[var(--target)] px-1 whitespace-nowrap"
         >
           How to use
         </Link>
         <Link
           href="/#features"
-          className="hidden text-[length:var(--text-sm)] font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] lg:inline-flex lg:items-center min-h-[var(--target)] px-2"
+          className="hidden text-[length:var(--text-sm)] font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] 2xl:inline-flex 2xl:items-center min-h-[var(--target)] px-1 whitespace-nowrap"
         >
           Features
         </Link>
         <Link
           href="/#pricing"
-          className="hidden text-[length:var(--text-sm)] font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] md:inline-flex md:items-center min-h-[var(--target)] px-2"
+          className="hidden text-[length:var(--text-sm)] font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] 2xl:inline-flex 2xl:items-center min-h-[var(--target)] px-1 whitespace-nowrap"
         >
           {t("pricing")}
         </Link>
@@ -70,7 +76,7 @@ export function SiteHeader() {
 
         <Link
           href="/login"
-          className="hidden text-[length:var(--text-sm)] font-semibold text-[var(--ink-muted)] hover:text-[var(--ink)] sm:inline-flex sm:items-center min-h-[var(--target)] px-3"
+          className="hidden text-[length:var(--text-sm)] font-semibold text-[var(--ink-muted)] hover:text-[var(--ink)] sm:inline-flex sm:items-center min-h-[var(--target)] px-2 whitespace-nowrap"
         >
           {t("login")}
         </Link>
@@ -78,9 +84,10 @@ export function SiteHeader() {
         {/* Primary CTA button with generous padding */}
         <Link
           href="/login?mode=signup"
-          className="inline-flex items-center justify-center rounded-full bg-rose-600 px-6 py-2.5 text-[length:var(--text-sm)] font-semibold text-white shadow-sm transition-all duration-200 hover:bg-rose-700 hover:shadow-md hover:-translate-y-0.5 min-h-[44px]"
+          className="inline-flex items-center justify-center whitespace-nowrap rounded-[var(--radius-pill)] bg-[var(--accent)] px-[var(--space-4)] text-[length:var(--text-sm)] font-semibold text-[var(--accent-ink)] transition-opacity duration-[var(--dur-fast)] hover:opacity-90 min-h-[var(--target)]"
         >
-          {t("getStarted")}
+          <span className="2xl:hidden">{t("getStartedShort")}</span>
+          <span className="hidden 2xl:inline">{t("getStarted")}</span>
         </Link>
       </nav>
     </header>
