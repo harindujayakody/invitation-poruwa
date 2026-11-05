@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { and, asc, eq } from "drizzle-orm";
 import { MessageCircle } from "lucide-react";
 import { db } from "@/db";
-import { vendorPackages, vendors } from "@/db/schema";
+import { vendorBlockedDates, vendorPackages, vendors } from "@/db/schema";
 import { SiteHeader } from "@/components/marketing/site-header";
 import { SiteFooter } from "@/components/marketing/site-footer";
 import { CategoryIcon } from "@/components/hub/category-icon";
@@ -14,18 +14,24 @@ export const instant = false;
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>;
-  searchParams: Promise<{ quote?: string }>;
+  searchParams: Promise<{ quote?: string; date?: string }>;
 }
 
 export default async function VendorPage({ params, searchParams }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("hub");
-  const { quote } = await searchParams;
+  const { quote, date } = await searchParams;
+  const checkDate = date && /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : undefined;
 
   const [vendor] = await db.select().from(vendors).where(and(eq(vendors.slug, slug), eq(vendors.published, true))).limit(1);
   if (!vendor) notFound();
-  const packages = await db.select().from(vendorPackages).where(eq(vendorPackages.vendorId, vendor.id)).orderBy(asc(vendorPackages.sortOrder));
+  const [packages, blocked] = await Promise.all([
+    db.select().from(vendorPackages).where(eq(vendorPackages.vendorId, vendor.id)).orderBy(asc(vendorPackages.sortOrder)),
+    checkDate
+      ? db.select({ id: vendorBlockedDates.id }).from(vendorBlockedDates).where(and(eq(vendorBlockedDates.vendorId, vendor.id), eq(vendorBlockedDates.date, checkDate))).limit(1)
+      : Promise.resolve([]),
+  ]);
 
   const field = "min-h-[var(--target)] w-full rounded-[var(--radius-md)] border border-[var(--line)] bg-[var(--surface-raised)] px-[var(--space-3)] text-[length:var(--text-base)]";
   const label = "mb-[var(--space-1)] block text-[length:var(--text-sm)] font-medium";
@@ -55,6 +61,18 @@ export default async function VendorPage({ params, searchParams }: Props) {
               </li>
             ))}
           </ul>
+          <form className="mt-[var(--space-8)] flex flex-wrap items-end gap-[var(--space-2)]">
+            <div>
+              <label htmlFor="check-date" className="mb-[var(--space-1)] block text-[length:var(--text-sm)] font-medium">{t("checkDate")}</label>
+              <input id="check-date" name="date" type="date" defaultValue={checkDate} required className={field} />
+            </div>
+            <button className="min-h-[var(--target)] rounded-[var(--radius-pill)] border border-[var(--line)] px-[var(--space-4)] text-[length:var(--text-sm)]">{t("check")}</button>
+          </form>
+          {checkDate ? (
+            <p role="status" className={`mt-[var(--space-2)] inline-block rounded-[var(--radius-sm)] px-[var(--space-3)] py-[var(--space-1)] text-[length:var(--text-sm)] ${blocked.length ? "bg-[var(--accent-blush)] text-[var(--danger)]" : "bg-[var(--accent-mint)] text-[var(--success)]"}`}>
+              {blocked.length ? t("dateBooked") : t("dateFree")}
+            </p>
+          ) : null}
           {vendor.whatsapp ? (
             <a href={`https://wa.me/${vendor.whatsapp}`} className="mt-[var(--space-4)] inline-flex min-h-[var(--target)] items-center gap-[var(--space-2)] text-[length:var(--text-sm)] text-[var(--ink)] underline">
               <MessageCircle size={16} strokeWidth={1.5} aria-hidden /> {t("whatsapp")}
@@ -80,7 +98,7 @@ export default async function VendorPage({ params, searchParams }: Props) {
                 <div><label className={label} htmlFor="q-guests">{t("guests")}</label><input id="q-guests" name="guestCount" type="number" min={1} max={5000} className={field} /></div>
               </div>
               <div><label className={label} htmlFor="q-msg">{t("message")}</label><textarea id="q-msg" name="message" maxLength={1000} rows={3} className={`${field} py-[var(--space-2)]`} /></div>
-              <button className="min-h-[var(--target)] rounded-[var(--radius-md)] bg-[var(--accent)] font-semibold text-[var(--accent-ink)]">{t("sendQuote")}</button>
+              <button className="min-h-[var(--target)] rounded-[var(--radius-pill)] bg-[var(--accent)] font-semibold text-[var(--accent-ink)]">{t("sendQuote")}</button>
               <p className="text-[length:var(--text-xs)] text-[var(--ink-muted)]">{t("quotePrivacy")}</p>
             </form>
           )}

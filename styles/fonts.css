@@ -4,11 +4,12 @@
   after /impeccable teach. Sinhala faces are Noto Sans/Serif Sinhala (OFL licence).
 */
 :root {
-  --font-ui: var(--font-latin), var(--font-sinhala), system-ui, sans-serif;
-  --font-display: var(--font-latin-serif), var(--font-sinhala-serif), Georgia, serif;
+  --font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-latin), var(--font-sinhala), system-ui, sans-serif;
+  /* Apple-style: display is the system sans (SF Pro Display), not a serif */
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", var(--font-latin), var(--font-sinhala), system-ui, sans-serif;
 }
 
 :root { font-family: var(--font-ui); font-size: 100%; }
 :lang(si) { font-family: var(--font-sinhala), var(--font-latin), system-ui, sans-serif; }
-:lang(si) .font-display { font-family: var(--font-sinhala-serif), var(--font-latin-serif), serif; }
+:lang(si) .font-display { font-family: var(--font-sinhala), system-ui, sans-serif; }
 .font-display { font-family: var(--font-display); }

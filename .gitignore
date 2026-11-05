@@ -39,3 +39,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# Vendor lead lists (third-party contact data, never commit)
+/outreach/

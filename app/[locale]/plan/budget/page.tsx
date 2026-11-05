@@ -31,7 +31,7 @@ export default async function BudgetPage({ params, searchParams }: Props) {
             <label htmlFor="b-total" className="mb-[var(--space-1)] block text-[length:var(--text-sm)] font-medium">{t("budgetTotal")}</label>
             <input id="b-total" name="total" type="number" min={50000} step={50000} defaultValue={total} className="min-h-[var(--target)] w-56 rounded-[var(--radius-md)] border border-[var(--line)] bg-[var(--surface-raised)] px-[var(--space-3)] tabular-nums" />
           </div>
-          <button className="min-h-[var(--target)] rounded-[var(--radius-md)] bg-[var(--accent)] px-[var(--space-6)] font-semibold text-[var(--accent-ink)]">{t("budgetUpdate")}</button>
+          <button className="min-h-[var(--target)] rounded-[var(--radius-pill)] bg-[var(--accent)] px-[var(--space-6)] font-semibold text-[var(--accent-ink)]">{t("budgetUpdate")}</button>
         </form>
 
         <ul className="mt-[var(--space-8)] grid gap-[var(--space-4)]">

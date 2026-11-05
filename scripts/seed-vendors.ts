@@ -18,7 +18,7 @@ async function main() {
   for (const v of demo) {
     const [row] = await db
       .insert(vendors)
-      .values({ slug: v.slug, name: v.name, category: v.category, city: v.city, priceFromLkr: v.priceFromLkr, description: v.description })
+      .values({ slug: v.slug, name: v.name, category: v.category, city: v.city, priceFromLkr: v.priceFromLkr, description: v.description, published: true })
       .onConflictDoNothing({ target: vendors.slug })
       .returning({ id: vendors.id });
     if (!row) continue; // already seeded
