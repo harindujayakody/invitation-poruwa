@@ -38,7 +38,7 @@
     "contact": "Contact",
     "terms": "Terms",
     "privacy": "Privacy",
-    "copyright": "© {year} [PLACEHOLDER_COMPANY]. All rights reserved."
+    "copyright": "© {year} suba.lk. All rights reserved."
   },
   "auth": {
     "signInTitle": "Sign in to your wedding space",
@@ -540,7 +540,7 @@
     "empty": "Nothing here yet."
   },
   "hub": {
-    "title": "Plan your whole wedding in one sweet place",
+    "title": "Plan your whole wedding in one place",
     "subtitle": "Find venues, photographers, decor, salons and wedding cars with clear prices. Ask for quotes, plan your budget and send invitations.",
     "service": "Service",
     "city": "City",

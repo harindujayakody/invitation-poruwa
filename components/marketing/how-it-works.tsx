@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { Palette, Clock, Send, Users, Sparkles } from "lucide-react";
+import { Palette, Clock, Send, Users } from "lucide-react";
 
 export function HowItWorks() {
   const locale = useLocale();
@@ -130,7 +130,6 @@ export function HowItWorks() {
                   <span className="text-xs text-stone-500 font-mono ml-2">suba.lk/app/editor</span>
                 </div>
                 <div className="flex items-center gap-2 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                  <Sparkles className="h-3 w-3" />
                   Live Preview
                 </div>
               </div>

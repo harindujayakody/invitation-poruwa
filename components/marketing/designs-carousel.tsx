@@ -19,7 +19,7 @@ export function DesignsCarousel() {
                 ? "ඔබගේ මංගල දිනයට ගැළපෙන ආරාධනා සැලසුම්"
                 : locale === "ta"
                 ? "உங்கள் திருமணத்திற்கான பிரத்தியேக வடிவமைப்புத் தொகுப்பு"
-                : "40+ customizable designs for your special celebration"}
+                : "Invitation designs for every Sri Lankan tradition"}
             </h2>
             <p className="text-base sm:text-lg text-[var(--ink-muted)] max-w-2xl leading-relaxed">
               {locale === "si"

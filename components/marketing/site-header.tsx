@@ -19,8 +19,8 @@ export function SiteHeader() {
         <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--accent)] text-[var(--accent-ink)]">
           <Heart className="h-4.5 w-4.5 fill-[var(--accent-ink)] text-[var(--accent-ink)]" strokeWidth={1.5} />
         </div>
-        <span className="font-display tracking-tight text-[length:var(--text-lg)] uppercase font-extrabold">
-          Suba<span className="text-[var(--accent)]">.lk</span>
+        <span className="font-display tracking-tight text-[length:var(--text-lg)] font-bold">
+          suba<span className="text-[var(--accent)]">.lk</span>
         </span>
       </Link>
 

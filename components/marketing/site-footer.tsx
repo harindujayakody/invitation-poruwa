@@ -2,7 +2,7 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Heart, MessageCircle, Mail } from "lucide-react";
+import { Heart, Mail } from "lucide-react";
 
 export function SiteFooter() {
   const t = useTranslations("footer");
@@ -26,17 +26,17 @@ export function SiteFooter() {
               <div className="flex h-9 w-9 items-center justify-center rounded-full bg-rose-600 text-white shadow-sm">
                 <Heart className="h-4.5 w-4.5 fill-white text-white" strokeWidth={1.5} />
               </div>
-              <span className="font-display tracking-tight text-xl uppercase font-extrabold text-white">
-                Suba<span className="text-rose-500">.lk</span>
+              <span className="font-display tracking-tight text-xl font-bold text-white">
+                suba<span className="text-rose-400">.lk</span>
               </span>
             </Link>
 
             <p className="text-sm text-stone-400 leading-relaxed max-w-sm">
               {isSinhala
-                ? "ශ්‍රී ලාංකීය විවාහ උත්සව සඳහාම විශේෂිත වූ ඩිජිටල් ආරාධනා වේදිකාව. සම්ප්‍රදායික සංස්කෘතිය සහ නවීන තාක්ෂණය සුසංයෝගයෙන්."
+                ? "ශ්‍රී ලාංකීය මංගල්‍යයක් සැලසුම් කිරීමට අවශ්‍ය සියල්ල එකම තැනක: සේවා සපයන්නන්, මිල ගණන්, අයවැය සහ ආරාධනා."
                 : isTamil
-                ? "இலங்கை திருமணங்களுக்கான நவீன டிஜிட்டல் அழைப்பிதழ் தளம். கலாச்சார மரபுகளுடன் வாட்ஸ்அப் இணைப்பு."
-                : "Digital wedding invitations crafted specifically for Sri Lankan celebrations. Honoring cultural heritage with modern WhatsApp delivery."}
+                ? "இலங்கைத் திருமணத்தைத் திட்டமிடத் தேவையான அனைத்தும் ஒரே இடத்தில்: சேவை வழங்குநர்கள், விலைகள், பட்ஜெட் மற்றும் அழைப்பிதழ்கள்."
+                : "Everything you need to plan a Sri Lankan wedding in one place: vendors with clear prices, your budget and your invitations."}
             </p>
 
             <div className="pt-2 flex flex-col gap-2 text-xs text-stone-400">
@@ -46,15 +46,6 @@ export function SiteFooter() {
               >
                 <Mail className="h-4 w-4 text-rose-500" />
                 <span>hello@suba.lk</span>
-              </a>
-              <a
-                href="https://wa.me/94771234567"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-white transition-colors"
-              >
-                <MessageCircle className="h-4 w-4 text-emerald-500" />
-                <span>+94 77 123 4567 (Colombo Concierge)</span>
               </a>
             </div>
           </div>
