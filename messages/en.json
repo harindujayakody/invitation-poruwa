@@ -9,7 +9,8 @@
     "pricing": "Pricing",
     "login": "Log in",
     "dashboard": "Dashboard",
-    "getStarted": "Create your invitation"
+    "getStarted": "Create your invitation",
+    "getStartedShort": "Get started"
   },
   "hero": {
     "headline": "Your wedding invitation, personal to every guest",
@@ -37,7 +38,7 @@
     "contact": "Contact",
     "terms": "Terms",
     "privacy": "Privacy",
-    "copyright": "© {year} [PLACEHOLDER_COMPANY]. All rights reserved."
+    "copyright": "© {year} suba.lk. All rights reserved."
   },
   "auth": {
     "signInTitle": "Sign in to your wedding space",
@@ -539,8 +540,8 @@
     "empty": "Nothing here yet."
   },
   "hub": {
-    "title": "Plan your whole wedding in one sweet place",
-    "subtitle": "Find venues, photographers, decor, salons and wedding cars with clear prices. Ask for quotes, plan your budget and send invitations.",
+    "title": "Plan your wedding, one happy step at a time",
+    "subtitle": "Trusted vendors with clear prices, plus your budget, guests and invitations in one place.",
     "service": "Service",
     "city": "City",
     "anyCity": "Any city",
@@ -578,7 +579,11 @@
       "photographer": "Photographers",
       "decor": "Decorations",
       "salon": "Bridal salons",
-      "car": "Wedding cars"
+      "car": "Wedding cars",
+      "dj": "DJs & bands",
+      "astrologer": "Astrologers",
+      "ashtaka": "Ashtaka",
+      "fragrance": "Fragrance & favours"
     },
     "cities": {
       "colombo": "Colombo",
@@ -586,6 +591,74 @@
       "kandy": "Kandy",
       "galle": "Galle",
       "negombo": "Negombo"
+    },
+    "checkDate": "Check a date",
+    "check": "Check",
+    "dateFree": "Free on this date",
+    "dateBooked": "Already booked on this date",
+    "navForVendors": "For vendors",
+    "weddingDate": "Wedding date",
+    "findVendors": "Find vendors",
+    "browseTitle": "Browse by service",
+    "planCtaTitle": "Start your wedding plan",
+    "planCtaText": "A free budget planner that shows where the money goes",
+    "featuresTitle": "Everything for the big day",
+    "f1Title": "Find vendors",
+    "f1Text": "Venues, photographers, decor, salons, cars, DJs, astrologers and more, with real prices.",
+    "f2Title": "Plan your budget",
+    "f2Text": "Enter your total and see a typical split across every service.",
+    "f3Title": "Invite on WhatsApp",
+    "f3Text": "A personal invitation link for every guest, with RSVPs and seating. From Rs. 2,900.",
+    "tabHome": "Home",
+    "tabVendors": "Vendors",
+    "tabPlan": "Plan",
+    "tabInvites": "Invitations",
+    "navPlan": "Plan",
+    "navInvitations": "Invitations",
+    "freeOn": "Free on {date}",
+    "bookedOn": "Booked on {date}",
+    "freeOnly": "Free on my date",
+    "askQuote": "Ask for a quote",
+    "yourDate": "Your wedding date"
+  },
+  "vendorTools": {
+    "title": "Your business on suba.lk",
+    "intro": "List your services, show real prices, block booked dates and reply to couples' quote requests.",
+    "live": "Live",
+    "pending": "Waiting for approval",
+    "viewPublic": "View public page",
+    "quotes": "Quote requests",
+    "noQuotes": "No quote requests yet.",
+    "replyWhatsapp": "Reply on WhatsApp",
+    "mark": {
+      "replied": "Mark replied",
+      "closed": "Close"
+    },
+    "quoteStatus": {
+      "new": "New",
+      "replied": "Replied",
+      "closed": "Closed"
+    },
+    "remove": "Remove",
+    "packageName": "Package name",
+    "price": "Price (Rs.)",
+    "includes": "What's included",
+    "addPackage": "Add package",
+    "blockedDates": "Booked dates",
+    "blockDate": "Block date",
+    "addAnother": "Add another business",
+    "listBusiness": "List your business",
+    "businessName": "Business name",
+    "whatsapp": "WhatsApp number",
+    "priceFrom": "Starting price (Rs.)",
+    "description": "About your business",
+    "submit": "Submit for review",
+    "reviewNote": "Our team checks every listing before it goes live, usually within 2 working days.",
+    "status": {
+      "created": "Thanks! Your listing is waiting for approval.",
+      "saved": "Saved.",
+      "invalid": "Please check the details and try again.",
+      "unauthorized": "Please sign in again."
     }
   }
 }

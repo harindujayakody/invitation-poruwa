@@ -53,7 +53,7 @@ export default async function LoginPage({ params, searchParams }: LoginPageProps
         className="px-[var(--space-6)] py-[var(--space-4)] text-center text-[length:var(--text-xs)] text-[var(--ink-muted)] md:px-[var(--space-12)]"
         style={{ borderTop: "1px solid var(--line)" }}
       >
-        © 2026 [PLACEHOLDER_COMPANY]. All rights reserved.
+        © 2026 suba.lk. All rights reserved.
       </footer>
     </div>
   );

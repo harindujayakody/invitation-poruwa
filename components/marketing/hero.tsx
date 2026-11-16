@@ -69,21 +69,13 @@ export function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#fcf9f2] via-[#fbf8f0] to-[#f7f2e7] pt-12 pb-20 md:pt-16 md:pb-28">
-      {/* Subtle radial ambient warmth backdrop */}
-      <div
-        className="pointer-events-none absolute -top-40 right-0 h-[600px] w-[600px] rounded-full opacity-30 blur-3xl"
-        style={{
-          background: "radial-gradient(circle, rgba(225, 29, 72, 0.25) 0%, rgba(217, 119, 6, 0.15) 50%, transparent 70%)",
-        }}
-        aria-hidden="true"
-      />
+    <section className="relative overflow-hidden border-t border-[var(--line)] bg-[var(--surface-raised)] pt-12 pb-20 md:pt-16 md:pb-28">
 
       <div className="mx-auto max-w-6xl px-[var(--space-6)] md:px-[var(--space-12)]">
         <div className="grid grid-cols-1 items-center gap-[var(--space-12)] lg:grid-cols-12 lg:gap-[var(--space-8)]">
           {/* Left Column: Headline, Description & CTAs */}
           <div className="lg:col-span-7 space-y-6 text-left">
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[var(--ink)] leading-[1.12]">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[var(--ink)] leading-[1.12]">
               {isSinhala ? (
                 <>
                   ඔබගේ මංගල ආරාධනය,{" "}
@@ -100,7 +92,7 @@ export function Hero() {
                   <span className="text-rose-600 block sm:inline">sent on WhatsApp.</span>
                 </>
               )}
-            </h2>
+            </h1>
 
             <p className="text-lg sm:text-xl text-[var(--ink-muted)] leading-relaxed max-w-[54ch]">
               {isSinhala

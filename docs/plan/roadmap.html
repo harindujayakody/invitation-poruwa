@@ -1,0 +1,329 @@
+<title>suba.lk Roadmap</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: one reading column; status strip, then a phase timeline down a rail, then the quality bar and owner decisions. */
+:root {
+  --bg: #fbfbfd;
+  --panel: #ffffff;
+  --sunk: #f2f2f5;
+  --ink: #1d1d1f;
+  --muted: #6e6e73;
+  --line: #dcdce1;
+  --accent: #a3264a;       /* suba temple-rose */
+  --accent-soft: #f7e8ed;
+  --done: #2f7d5b; --done-soft: #e4f3ec;
+  --review: #9a6a00; --review-soft: #fbf1d9;
+  --next: #4a5568; --next-soft: #eceef2;
+  --font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Noto Sans", "Segoe UI", system-ui, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Noto Sans", "Segoe UI", system-ui, sans-serif;
+  --font-si: "Noto Sans Sinhala", "Sinhala Sangam MN", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #111113; --panel: #1b1b1e; --sunk: #232327; --ink: #f2f2f5; --muted: #a1a1a8; --line: #34343a;
+  --accent: #f07a9b; --accent-soft: #3a1c26;
+  --done: #6fd3a3; --done-soft: #17322a; --review: #f0c25a; --review-soft: #352a10; --next: #b8c0cc; --next-soft: #262a31;
+  color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #111113; --panel: #1b1b1e; --sunk: #232327; --ink: #f2f2f5; --muted: #a1a1a8; --line: #34343a;
+  --accent: #f07a9b; --accent-soft: #3a1c26;
+  --done: #6fd3a3; --done-soft: #17322a; --review: #f0c25a; --review-soft: #352a10; --next: #b8c0cc; --next-soft: #262a31;
+  color-scheme: dark; }
+
+body { background: var(--bg); color: var(--ink); font-family: var(--font-ui); font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 980px; margin: 0 auto; padding-block: 48px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 56px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.2rem, 1.6rem + 3vw, 3.6rem); line-height: 1.05; letter-spacing: -0.025em; font-weight: 700; }
+h2 { font-size: clamp(1.5rem, 1.25rem + 1.2vw, 2rem); letter-spacing: -0.02em; font-weight: 650; }
+h3 { font-size: 1.1rem; font-weight: 650; letter-spacing: -0.01em; }
+p { margin: 0; max-width: 66ch; text-wrap: pretty; }
+.muted { color: var(--muted); }
+.si { font-family: var(--font-si); line-height: 1.7; letter-spacing: 0; }
+.label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+section { display: grid; gap: 20px; }
+.lede { font-size: 1.2rem; color: var(--muted); max-width: 60ch; }
+
+/* status strip */
+.status { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; display: grid; gap: 6px; min-width: 0; }
+.chip { display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 980px; width: fit-content; }
+.chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.c-done { background: var(--done-soft); color: var(--done); }
+.c-review { background: var(--review-soft); color: var(--review); }
+.c-next { background: var(--next-soft); color: var(--next); }
+.c-later { background: var(--sunk); color: var(--muted); }
+
+/* phase timeline */
+.timeline { display: grid; gap: 0; }
+.phase { display: grid; grid-template-columns: 132px 1fr; gap: 24px; position: relative; padding-bottom: 36px; }
+.phase:last-child { padding-bottom: 0; }
+.when { display: grid; gap: 6px; align-content: start; padding-top: 4px; }
+.when b { font-variant-numeric: tabular-nums; font-size: 0.95rem; }
+.body { border-left: 2px solid var(--line); padding-left: 24px; display: grid; gap: 14px; min-width: 0; position: relative; }
+.body::before { content: ""; position: absolute; left: -8px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 2px solid var(--line); }
+.phase.is-done .body::before { background: var(--done); border-color: var(--done); }
+.phase.is-review .body::before { background: var(--review); border-color: var(--review); }
+.phase.is-next .body::before { border-color: var(--accent); background: var(--accent-soft); }
+.tracks { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.track { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.track ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 0.94rem; }
+.gate { background: var(--accent-soft); border-radius: 14px; padding: 12px 16px; font-size: 0.94rem; display: grid; gap: 4px; }
+.gate strong { color: var(--accent); }
+
+/* tables */
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; font-size: 0.94rem; min-width: 560px; }
+th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 600; background: var(--sunk); }
+tr:last-child td { border-bottom: 0; }
+td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+.qa { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; display: grid; gap: 8px; min-width: 0; }
+.qa ul { margin: 0; padding-left: 18px; display: grid; gap: 5px; font-size: 0.94rem; }
+code { font-family: var(--font-mono); font-size: 0.86em; background: var(--sunk); padding: 1px 6px; border-radius: 6px; }
+
+@media (max-width: 640px) {
+  .phase { grid-template-columns: 1fr; gap: 10px; }
+  .when { grid-auto-flow: column; justify-content: start; gap: 10px; align-items: center; }
+}
+</style>
+
+<div class="wrap">
+  <header style="display:grid; gap:16px">
+    <span class="label">suba.lk · owners' roadmap · updated 6 Nov 2026</span>
+    <h1>From invitation app to Sri Lanka's wedding hub</h1>
+    <p class="lede">The whole build, phase by phase: what ships, who works on what, and the test each phase has to pass before the next one starts. Dates assume two developers (the owners), one person signing up vendors, and one part-time content writer.</p>
+    <p class="si muted" lang="si">සුබ මංගල්‍යයක් — එකම තැනකින්</p>
+  </header>
+
+  <section aria-labelledby="now">
+    <h2 id="now">Where we are today</h2>
+    <div class="status">
+      <div class="stat"><span class="chip c-done">Done</span><h3>Phase 1 directory</h3><p class="muted">Vendor directory, quote requests, budget planner, three languages. Merged in PR #1.</p></div>
+      <div class="stat"><span class="chip c-review">In review</span><h3>Phase 2a vendor tools</h3><p class="muted">Vendor dashboard, packages, booked dates, quote inbox, Apple-style UI. PR #2.</p></div>
+      <div class="stat"><span class="chip c-next">Next</span><h3>Finish Phase 0</h3><p class="muted">Photo uploads to R2, automated checks (CI), error tracking, staging site, legal pages.</p></div>
+      <div class="stat"><span class="chip c-later">Ready to use</span><h3>257 vendor leads</h3><p class="muted">Not verified yet. Kept outside the public repo. Use them for the first round of vendor sign-ups.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="phases">
+    <h2 id="phases">The phases</h2>
+    <p class="muted">Each phase ends with a test it must pass. If a phase misses its test, we fix it before starting the next phase.</p>
+
+    <div class="timeline">
+
+      <article class="phase is-review">
+        <div class="when"><b>Nov 2026</b><span class="chip c-review">Finishing</span></div>
+        <div class="body">
+          <h3>Phase 0: foundations</h3>
+          <p>Make the site safe to run with real money and real data before anyone markets it.</p>
+          <div class="tracks">
+            <div class="track"><span class="label">Engineering</span><ul>
+              <li>Move photo uploads to Cloudflare R2 with signed links (they currently save to the server's own disk)</li>
+              <li>GitHub Actions on every PR: lint, typecheck, unit tests, build, Playwright tests</li>
+              <li>A staging site plus a production database with daily backups</li>
+              <li>Sentry error tracking, uptime checks, and privacy-friendly analytics</li>
+            </ul></div>
+            <div class="track"><span class="label">Business and legal</span><ul>
+              <li>Register a private limited company and sign a shareholder agreement</li>
+              <li>Get the PayHere merchant account approved for live payments</li>
+              <li>Privacy policy, terms, refund policy (PDPA No. 9 of 2022)</li>
+              <li>Point suba.lk DNS at production and set up email for the domain</li>
+            </ul></div>
+          </div>
+          <div class="gate"><strong>Test to pass</strong>CI passes on <code>main</code>. A real PayHere sandbox payment goes through end to end. A restore from backup is tested. The legal pages are live.</div>
+        </div>
+      </article>
+
+      <article class="phase is-done">
+        <div class="when"><b>Nov 2026</b><span class="chip c-done">Code done</span></div>
+        <div class="body">
+          <h3>Phase 1: directory</h3>
+          <p>Couples can find vendors by service and city, see prices, ask for quotes and plan a budget.</p>
+          <div class="tracks">
+            <div class="track"><span class="label">Still to do</span><ul>
+              <li>A search page for each category in each city (e.g. <code>/si/photographers/kandy</code>), with structured data</li>
+              <li>A sitemap and <code>hreflang</code> tags for each language, and Google Search Console set up</li>
+              <li>A nakath calendar for 2027, but only once a partner astrologer has checked the dates</li>
+            </ul></div>
+            <div class="track"><span class="label">Vendor sign-ups</span><ul>
+              <li>Call all 257 leads and confirm each one is still in business</li>
+              <li>Offer the first 300 vendors Pro free for 6 months</li>
+              <li>Build each vendor's profile for them from their Facebook page</li>
+            </ul></div>
+          </div>
+          <div class="gate"><strong>Test to pass</strong>300 approved vendors with at least one package each. Every Phase 1 category has 15 or more vendors in Colombo, Gampaha and Kandy.</div>
+        </div>
+      </article>
+
+      <article class="phase is-review">
+        <div class="when"><b>Nov–Dec 2026</b><span class="chip c-review">PR #2</span></div>
+        <div class="body">
+          <h3>Phase 2a: vendor tools</h3>
+          <p>Vendors manage their own listing, so suba.lk doesn't have to update it for them.</p>
+          <div class="tracks">
+            <div class="track"><span class="label">Ships</span><ul>
+              <li>Dashboard, packages, booked dates and a quote inbox</li>
+              <li>New categories: DJs, astrologers, ashtaka, fragrance</li>
+              <li>Apple-style design system across the site</li>
+            </ul></div>
+            <div class="track"><span class="label">Add next</span><ul>
+              <li><code>/admin</code> screen for approving vendors (today this is a SQL command)</li>
+              <li>Vendor photo galleries, using R2 from Phase 0</li>
+              <li>WhatsApp alert to the vendor when a new quote request arrives</li>
+            </ul></div>
+          </div>
+          <div class="gate"><strong>Test to pass</strong>Half of all quote requests get a reply within 24 hours. 70% of vendors have set their booked dates.</div>
+        </div>
+      </article>
+
+      <article class="phase is-next">
+        <div class="when"><b>Dec 2026 – Jan 2027</b><span class="chip c-next">Next build</span></div>
+        <div class="body">
+          <h3>Phase 2b: bookings and revenue</h3>
+          <p>Couples reserve dates with a deposit, and vendors start paying for plans. This is the first income from the marketplace.</p>
+          <div class="tracks">
+            <div class="track"><span class="label">Product</span><ul>
+              <li>Deposits through PayHere (20% by default). The date gets blocked when PayHere confirms the payment</li>
+              <li>Reviews only from couples who booked, after the wedding date has passed</li>
+              <li>Free, Pro (Rs. 3,900/mo) and Premium (Rs. 9,900/mo) vendor plans</li>
+              <li>Featured listings, always clearly labelled</li>
+            </ul></div>
+            <div class="track"><span class="label">Operations</span><ul>
+              <li>A written cancellation and refund policy</li>
+              <li>Weekly payouts to vendors, recorded in a payouts table</li>
+              <li>One person who handles disputes, and records every change in the audit log</li>
+            </ul></div>
+          </div>
+          <div class="gate"><strong>Test to pass</strong>100 paid deposits with fewer than 2% disputed. 40 paying vendors. Rs. 0.9M monthly revenue.</div>
+        </div>
+      </article>
+
+      <article class="phase">
+        <div class="when"><b>Feb 2027</b><span class="chip c-later">Planned</span></div>
+        <div class="body">
+          <h3>Phase 3: public launch</h3>
+          <p>Launch in Colombo and Gampaha first, then the whole country. The quality bar below has to be met first.</p>
+          <div class="tracks">
+            <div class="track"><span class="label">Launch</span><ul>
+              <li>2-week soft launch with 50 couples who sign up through vendors</li>
+              <li>Public launch with a wedding-fair stand and a press piece on prices (from the yearly price guide)</li>
+              <li>TikTok and Reels, 3 posts a week; a WhatsApp channel for nakath dates and deals</li>
+            </ul></div>
+            <div class="track"><span class="label">Content</span><ul>
+              <li>2027 price guide built from real vendor packages</li>
+              <li>Guides for each tradition: Buddhist, Hindu, Muslim, Christian</li>
+              <li>A "Made with suba.lk" line and vendor credits on every invitation (couples can turn them off)</li>
+            </ul></div>
+          </div>
+          <div class="gate"><strong>Test to pass</strong>60,000 visits a month and 800 quote requests a month. No accessibility blockers. Every page meets the performance targets in all three languages.</div>
+        </div>
+      </article>
+
+      <article class="phase">
+        <div class="when"><b>Mar–Jun 2027</b><span class="chip c-later">Planned</span></div>
+        <div class="body">
+          <h3>Phase 4: scale and new services</h3>
+          <div class="tracks">
+            <div class="track"><span class="label">Services</span><ul>
+              <li>Printed cards: turn an invitation into a print-ready PDF and send it to 2 partner printers</li>
+              <li>Wedding loans: refer couples to licensed lenders only (we never lend ourselves)</li>
+              <li>Magul Bera drummers, Jayamangala Gatha groups, more fragrance and favour partners</li>
+            </ul></div>
+            <div class="track"><span class="label">Platform</span><ul>
+              <li>Installable phone app (PWA) with offline access to the couple's plan</li>
+              <li>WhatsApp Business API for quote and booking alerts</li>
+              <li>Search moves to Meilisearch once there are more than 5,000 listings</li>
+              <li>Expand to Galle, Kurunegala, Jaffna, Negombo</li>
+            </ul></div>
+          </div>
+          <div class="gate"><strong>Test to pass</strong>250,000 visits a month, 180 paying vendors, Rs. 3M or more monthly revenue, and fewer than 5% of vendors cancelling each month.</div>
+        </div>
+      </article>
+
+      <article class="phase">
+        <div class="when"><b>Jul–Dec 2027</b><span class="chip c-later">Planned</span></div>
+        <div class="body">
+          <h3>Phase 5: the full wedding hub</h3>
+          <div class="tracks">
+            <div class="track"><span class="label">Couples</span><ul>
+              <li>One wedding workspace that shares the budget, bookings, guests and seating with family</li>
+              <li>A planning service for Sri Lankan couples abroad (Australia, UK, Middle East)</li>
+              <li>Ideas gallery where every photo links to the vendor who made it</li>
+            </ul></div>
+            <div class="track"><span class="label">Vendors</span><ul>
+              <li>Vendor reports: views, leads, bookings and money earned</li>
+              <li>Calendar sync and invoices for vendors</li>
+              <li>Sponsored wedding fairs and newsletters</li>
+            </ul></div>
+          </div>
+          <div class="gate"><strong>Test to pass</strong>800,000 visits a month, 600 paying vendors, Rs. 10M monthly revenue (the 24-month target in the plan).</div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section aria-labelledby="bar">
+    <h2 id="bar">What "perfectly built" means</h2>
+    <p class="muted">These checks apply to every page before the Phase 3 launch, and to every PR after it. Most of them can run automatically in CI.</p>
+    <div class="grid2">
+      <div class="qa"><h3>Speed</h3><ul>
+        <li>Page fully loads (LCP) in under 2.5 s on a mid-range Android over 4G</li>
+        <li>Responds to taps within 200 ms (INP); layout shifts under 0.1 (CLS)</li>
+        <li>Guest invitation page under 150 KB of JavaScript (gzipped)</li>
+        <li>Lighthouse score of 90+ for speed and 100 for SEO on key pages</li>
+      </ul></div>
+      <div class="qa"><h3>Access and language</h3><ul>
+        <li>Meets the WCAG 2.2 AA accessibility standard; buttons at least 44 px; works fully with a keyboard</li>
+        <li>Every word in si, ta and en, with <code>lang</code> set; Sinhala and Tamil text has no letter-spacing</li>
+        <li>No sideways scrolling at 360, 768 or 1280 px in any language</li>
+      </ul></div>
+      <div class="qa"><h3>Security and privacy</h3><ul>
+        <li>Every query filtered by the signed-in owner, with tests proving one user can't see another's data</li>
+        <li>PayHere payment notices verified, and each one processed only once even if it arrives twice</li>
+        <li>Shared rate limits (Redis); guest links never logged</li>
+        <li>Collect as little personal data as possible; people can export or delete theirs; data deleted after the wedding</li>
+      </ul></div>
+      <div class="qa"><h3>Reliability</h3><ul>
+        <li>99.9% uptime; Sentry alerts sent to both owners</li>
+        <li>Database migrations tested on staging before going live</li>
+        <li>Daily backups, with a test restore every month</li>
+        <li>Playwright tests for the main paths: search, quote, booking, invitation, RSVP</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="kpi">
+    <h2 id="kpi">Numbers to track every week</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Measure</th><th>Phase 1–2</th><th>Launch (Feb 2027)</th><th>Jun 2027</th><th>Dec 2027</th></tr></thead>
+      <tbody>
+        <tr><td>Approved vendors</td><td class="num">300</td><td class="num">600</td><td class="num">1,200</td><td class="num">3,000</td></tr>
+        <tr><td>Paying vendors</td><td class="num">—</td><td class="num">40</td><td class="num">180</td><td class="num">600</td></tr>
+        <tr><td>Visits per month</td><td class="num">20,000</td><td class="num">60,000</td><td class="num">250,000</td><td class="num">800,000</td></tr>
+        <tr><td>Quote requests per month</td><td class="num">300</td><td class="num">800</td><td class="num">4,000</td><td class="num">15,000</td></tr>
+        <tr><td>Monthly revenue (Rs.)</td><td class="num">invitations only</td><td class="num">0.9M</td><td class="num">3.2M</td><td class="num">10M</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted" style="font-size:0.9rem">These are planning targets from the suba.lk plan, not forecasts. Update them each month with real numbers.</p>
+  </section>
+
+  <section aria-labelledby="decide">
+    <h2 id="decide">Decisions the owners need to make</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Decision</th><th>Needed by</th><th>Recommendation</th></tr></thead>
+      <tbody>
+        <tr><td>Company structure, shares and roles</td><td class="num">Nov 2026</td><td>Register now and agree who decides what, before signing vendor contracts or taking investment</td></tr>
+        <tr><td>Public or private repo</td><td class="num">Nov 2026</td><td>Make it private. The code holds the business logic, and the vendor list can't be stored in a public repo</td></tr>
+        <tr><td>Hosting</td><td class="num">Nov 2026</td><td>Vercel or Cloudflare for the site, with Postgres on Supabase or Neon and photos on R2</td></tr>
+        <tr><td>When to take deposits</td><td class="num">Dec 2026</td><td>Only after the cancellation policy and dispute handling are ready</td></tr>
+        <tr><td>Vendor plan prices</td><td class="num">Dec 2026</td><td>Test Rs. 3,900 / 9,900 with 30 vendors in person before building billing</td></tr>
+        <tr><td>Lending partner</td><td class="num">Apr 2027</td><td>Referral agreement with CBSL-licensed lenders only, checked by a lawyer</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+</div>

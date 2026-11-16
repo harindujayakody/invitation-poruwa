@@ -237,8 +237,11 @@ export const customDesignRequests = pgTable(
 
 
 // ---------- Phase 1: vendor directory + quote requests ----------
-// Phase 1 launches five categories; add enum values as new categories open.
-export const vendorCategory = pgEnum("vendor_category", ["venue", "photographer", "decor", "salon", "car"]);
+// Append new categories at the end only (Postgres enums cannot drop or reorder values).
+export const vendorCategory = pgEnum("vendor_category", [
+  "venue", "photographer", "decor", "salon", "car",
+  "dj", "astrologer", "ashtaka", "fragrance", // phase 2
+]);
 export const quoteStatus = pgEnum("quote_status", ["new", "replied", "closed"]);
 
 export const vendors = pgTable(
@@ -254,7 +257,8 @@ export const vendors = pgTable(
     whatsapp: text("whatsapp"), // digits-only 94…, from normalizeLkPhone
     priceFromLkr: integer("price_from_lkr"),
     verified: boolean("verified").notNull().default(false),
-    published: boolean("published").notNull().default(true),
+    // New self-serve listings start hidden until the team approves them.
+    published: boolean("published").notNull().default(false),
     createdAt: createdAt(),
   },
   (t) => [uniqueIndex("vendors_slug_uq").on(t.slug), index("vendors_category_city_idx").on(t.category, t.city)],
@@ -288,4 +292,16 @@ export const quoteRequests = pgTable(
     createdAt: createdAt(),
   },
   (t) => [index("quote_requests_vendor_idx").on(t.vendorId)],
+);
+
+// ---------- Phase 2a: vendor availability ----------
+export const vendorBlockedDates = pgTable(
+  "vendor_blocked_dates",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    vendorId: uuid("vendor_id").notNull().references(() => vendors.id, { onDelete: "cascade" }),
+    date: text("date").notNull(), // YYYY-MM-DD
+    createdAt: createdAt(),
+  },
+  (t) => [uniqueIndex("vendor_blocked_dates_uq").on(t.vendorId, t.date)],
 );
