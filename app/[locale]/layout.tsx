@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import {
   Hanken_Grotesk,
   Newsreader,
+  Nunito,
   Noto_Sans_Sinhala,
   Noto_Serif_Sinhala,
 } from "next/font/google";
@@ -21,6 +22,13 @@ const latinSerif = Newsreader({
   variable: "--font-latin-serif",
   display: "swap",
 });
+// Rounded heading face for devices without a rounded system font (Android, Windows).
+const rounded = Nunito({
+  subsets: ["latin"],
+  weight: ["700", "800"],
+  variable: "--font-rounded",
+  display: "swap",
+});
 const sinhala = Noto_Sans_Sinhala({
   subsets: ["sinhala"],
   variable: "--font-sinhala",
@@ -36,6 +44,7 @@ const sinhalaSerif = Noto_Serif_Sinhala({
 const fontVars = [
   latin.variable,
   latinSerif.variable,
+  rounded.variable,
   sinhala.variable,
   sinhalaSerif.variable,
 ].join(" ");

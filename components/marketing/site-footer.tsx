@@ -91,32 +91,32 @@ export function SiteFooter() {
             </h3>
             <ul className="space-y-2.5 text-sm text-stone-400">
               <li>
-                <Link href="/#features" className="hover:text-white transition-colors">
+                <Link href="/invitations#features" className="hover:text-white transition-colors">
                   WhatsApp 1-Tap Links
                 </Link>
               </li>
               <li>
-                <Link href="/#features" className="hover:text-white transition-colors">
+                <Link href="/invitations#features" className="hover:text-white transition-colors">
                   Interactive Seating Plan
                 </Link>
               </li>
               <li>
-                <Link href="/#features" className="hover:text-white transition-colors">
+                <Link href="/invitations#features" className="hover:text-white transition-colors">
                   Live Guest Photo Stream
                 </Link>
               </li>
               <li>
-                <Link href="/#features" className="hover:text-white transition-colors">
+                <Link href="/invitations#features" className="hover:text-white transition-colors">
                   Entrance QR Easel Poster
                 </Link>
               </li>
               <li>
-                <Link href="/#features" className="hover:text-white transition-colors">
+                <Link href="/invitations#features" className="hover:text-white transition-colors">
                   Auspicious Nakath Times
                 </Link>
               </li>
               <li>
-                <Link href="/#features" className="hover:text-white transition-colors">
+                <Link href="/invitations#features" className="hover:text-white transition-colors">
                   Headcount & Dietary RSVP
                 </Link>
               </li>
@@ -130,12 +130,12 @@ export function SiteFooter() {
             </h3>
             <ul className="space-y-2.5 text-sm text-stone-400">
               <li>
-                <Link href="/#pricing" className="hover:text-white transition-colors">
+                <Link href="/invitations#pricing" className="hover:text-white transition-colors">
                   Pricing & Plans
                 </Link>
               </li>
               <li>
-                <Link href="/#how-it-works" className="hover:text-white transition-colors">
+                <Link href="/invitations#how-it-works" className="hover:text-white transition-colors">
                   How It Works
                 </Link>
               </li>

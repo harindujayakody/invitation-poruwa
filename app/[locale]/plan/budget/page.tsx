@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { SiteHeader } from "@/components/marketing/site-header";
 import { SiteFooter } from "@/components/marketing/site-footer";
+import { TabBar } from "@/components/hub/tab-bar";
 import { BUDGET_SPLIT, formatLkr } from "@/lib/vendors";
 
 export const instant = false;
@@ -54,6 +55,7 @@ export default async function BudgetPage({ params, searchParams }: Props) {
         <p className="mt-[var(--space-6)] text-[length:var(--text-xs)] text-[var(--ink-muted)]">{t("budgetNote")}</p>
       </main>
       <SiteFooter />
+      <TabBar active="plan" />
     </div>
   );
 }

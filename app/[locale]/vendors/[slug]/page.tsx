@@ -8,7 +8,8 @@ import { SiteHeader } from "@/components/marketing/site-header";
 import { SiteFooter } from "@/components/marketing/site-footer";
 import { CategoryIcon } from "@/components/hub/category-icon";
 import { requestQuoteAction } from "@/app/actions/quote";
-import { formatLkr } from "@/lib/vendors";
+import { CATEGORIES, formatLkr } from "@/lib/vendors";
+import { TINTS } from "@/components/hub/hub-home";
 
 export const instant = false;
 
@@ -42,17 +43,21 @@ export default async function VendorPage({ params, searchParams }: Props) {
       <SiteHeader />
       <main className="mx-auto grid w-full max-w-6xl flex-1 gap-[var(--space-8)] px-[var(--space-4)] py-[var(--space-8)] sm:px-[var(--space-6)] lg:grid-cols-[1.4fr_1fr]">
         <div>
-          <p className="flex items-center gap-[var(--space-2)] text-[length:var(--text-sm)] text-[var(--accent)]">
+          {/* Tinted cover until vendors can upload photos (needs R2 storage) */}
+          <div className={`mb-[var(--space-6)] flex h-40 items-end rounded-[var(--radius-lg)] p-[var(--space-4)] ${TINTS[CATEGORIES.indexOf(vendor.category) % 3]}`}>
+            <CategoryIcon category={vendor.category} size={24} />
+          </div>
+          <p className="flex items-center gap-[var(--space-2)] text-[length:var(--text-sm)] font-bold text-[var(--accent)]">
             <CategoryIcon category={vendor.category} size={16} /> {t(`categories.${vendor.category}`)} · {cityName}
-            {vendor.verified ? <span className="ml-[var(--space-2)] rounded-[var(--radius-sm)] bg-[var(--accent-mint)] px-[var(--space-2)] text-[var(--success)]">{t("verified")}</span> : null}
+            {vendor.verified ? <span className="ml-[var(--space-2)] rounded-[var(--radius-pill)] bg-[var(--accent-mint)] px-[var(--space-3)] text-[var(--success)]">{t("verified")}</span> : null}
           </p>
           <h1 className="mt-[var(--space-2)] font-display text-[length:var(--text-2xl)]">{vendor.name}</h1>
           {vendor.description ? <p className="mt-[var(--space-3)] max-w-[60ch] text-[var(--ink-muted)]">{vendor.description}</p> : null}
 
-          <h2 className="mt-[var(--space-8)] text-[length:var(--text-lg)] font-semibold">{t("packages")}</h2>
+          <h2 className="mt-[var(--space-8)] font-display text-[length:var(--text-lg)]">{t("packages")}</h2>
           <ul className="mt-[var(--space-3)] grid gap-[var(--space-3)]">
             {packages.map((p) => (
-              <li key={p.id} className="rounded-[var(--radius-lg)] bg-[var(--accent-blush)] p-[var(--space-4)]">
+              <li key={p.id} className="rounded-[var(--radius-lg)] border border-[var(--line)] bg-[var(--surface-raised)] p-[var(--space-4)]">
                 <div className="flex items-baseline justify-between gap-[var(--space-4)]">
                   <span className="font-semibold">{p.name}</span>
                   <span className="font-semibold tabular-nums">{formatLkr(p.priceLkr)}</span>
@@ -69,7 +74,7 @@ export default async function VendorPage({ params, searchParams }: Props) {
             <button className="min-h-[var(--target)] rounded-[var(--radius-pill)] border border-[var(--line)] px-[var(--space-4)] text-[length:var(--text-sm)]">{t("check")}</button>
           </form>
           {checkDate ? (
-            <p role="status" className={`mt-[var(--space-2)] inline-block rounded-[var(--radius-sm)] px-[var(--space-3)] py-[var(--space-1)] text-[length:var(--text-sm)] ${blocked.length ? "bg-[var(--accent-blush)] text-[var(--danger)]" : "bg-[var(--accent-mint)] text-[var(--success)]"}`}>
+            <p role="status" className={`mt-[var(--space-2)] inline-block rounded-[var(--radius-pill)] px-[var(--space-4)] py-[var(--space-1)] text-[length:var(--text-sm)] font-bold ${blocked.length ? "bg-[var(--muted)] text-[var(--ink-muted)]" : "bg-[var(--accent-mint)] text-[var(--success)]"}`}>
               {blocked.length ? t("dateBooked") : t("dateFree")}
             </p>
           ) : null}
@@ -80,8 +85,8 @@ export default async function VendorPage({ params, searchParams }: Props) {
           ) : null}
         </div>
 
-        <section id="quote" className="h-fit rounded-[var(--radius-lg)] border border-[var(--line)] bg-[var(--surface-raised)] p-[var(--space-6)]">
-          <h2 className="text-[length:var(--text-lg)] font-semibold">{t("quoteTitle")}</h2>
+        <section id="quote" className="h-fit scroll-mt-24 rounded-[var(--radius-lg)] border border-[var(--line)] bg-[var(--surface-raised)] p-[var(--space-6)]">
+          <h2 className="font-display text-[length:var(--text-lg)]">{t("quoteTitle")}</h2>
           {quote === "sent" ? (
             <p role="status" className="mt-[var(--space-3)] rounded-[var(--radius-md)] bg-[var(--accent-mint)] p-[var(--space-3)] text-[var(--success)]">{t("quoteSent")}</p>
           ) : (
@@ -94,17 +99,22 @@ export default async function VendorPage({ params, searchParams }: Props) {
               <div><label className={label} htmlFor="q-name">{t("yourName")}</label><input id="q-name" name="name" required minLength={2} maxLength={80} className={field} /></div>
               <div><label className={label} htmlFor="q-phone">{t("phone")}</label><input id="q-phone" name="phone" type="tel" inputMode="tel" required placeholder="077 123 4567" className={field} /></div>
               <div className="grid grid-cols-2 gap-[var(--space-3)]">
-                <div><label className={label} htmlFor="q-date">{t("date")}</label><input id="q-date" name="eventDate" type="date" className={field} /></div>
+                <div><label className={label} htmlFor="q-date">{t("date")}</label><input id="q-date" name="eventDate" type="date" defaultValue={checkDate} className={field} /></div>
                 <div><label className={label} htmlFor="q-guests">{t("guests")}</label><input id="q-guests" name="guestCount" type="number" min={1} max={5000} className={field} /></div>
               </div>
               <div><label className={label} htmlFor="q-msg">{t("message")}</label><textarea id="q-msg" name="message" maxLength={1000} rows={3} className={`${field} py-[var(--space-2)]`} /></div>
-              <button className="min-h-[var(--target)] rounded-[var(--radius-pill)] bg-[var(--accent)] font-semibold text-[var(--accent-ink)]">{t("sendQuote")}</button>
+              <button className="min-h-[var(--target)] rounded-[var(--radius-pill)] bg-[var(--accent)] font-display font-extrabold text-[var(--accent-ink)]">{t("sendQuote")}</button>
               <p className="text-[length:var(--text-xs)] text-[var(--ink-muted)]">{t("quotePrivacy")}</p>
             </form>
           )}
         </section>
       </main>
       <SiteFooter />
+      {/* Phones: keep the one main action in reach while the form is off screen */}
+      <div className="h-20 lg:hidden" aria-hidden />
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[var(--line)] bg-[var(--surface-raised)] px-[var(--space-4)] pt-[var(--space-2)] pb-[max(var(--space-2),env(safe-area-inset-bottom))] lg:hidden">
+        <a href="#quote" className="flex min-h-[var(--target)] items-center justify-center rounded-[var(--radius-pill)] bg-[var(--accent)] font-display font-extrabold text-[var(--accent-ink)]">{t("askQuote")}</a>
+      </div>
     </div>
   );
 }

@@ -5,8 +5,8 @@
 */
 :root {
   --font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-latin), var(--font-sinhala), system-ui, sans-serif;
-  /* Apple-style: display is the system sans (SF Pro Display), not a serif */
-  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", var(--font-latin), var(--font-sinhala), system-ui, sans-serif;
+  /* Headings: Apple's rounded system font where it exists (ui-rounded), Nunito elsewhere */
+  --font-display: ui-rounded, "SF Pro Rounded", var(--font-rounded), var(--font-sinhala), system-ui, sans-serif;
 }
 
 :root { font-family: var(--font-ui); font-size: 100%; }
